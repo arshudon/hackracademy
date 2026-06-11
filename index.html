@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hack-R Academy</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon2.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon1.png">
+    <link rel="apple-touch-icon" href="images/favicon1.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Main.css">
+</head>
+
+<body>
+    <canvas id="grid-canvas"></canvas>
+    <div class="scanlines"></div>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar" id="navbar">
+            <a class="logo" href="#" onclick="goHome(); return false;">
+                <img src="images/logo.png" alt="logo">
+                <div class="logo-text">HACK-<span class="r">R</span> <span class="academy">ACADEMY</span></div>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="active" id="navHome"  onclick="goHome(); return false;">Home</a></li>
+                <li><a href="#" id="navAbout" onclick="showAbout(event)">About Us</a></li>
+            </ul>
+
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- HOME SECTION -->
+    <div id="home-section">
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-text">
+                <p class="hero-eyebrow">// Cybersecurity Learning Platform</p>
+                <h1>Learn <span>Ethical Hacking</span><br>& Bug Bounty</h1>
+                <p>Build real skills in Cybersecurity, Bug Bounty, and Security Research with Hack-R Academy — a community-first platform for the next generation of ethical hackers.</p>
+                <div class="hero-btns">
+                    <a href="#sub-articles" class="btn-primary" onclick="switchTab('sub-articles'); return false;">Explore Articles</a>
+                    <a href="#" class="btn-ghost"   onclick="showAbout(event); return false;">About Us</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/logo.png" alt="Hack-R Academy">
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-num">20+</div>
+                <div class="stat-label">Articles</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">1</div>
+                <div class="stat-label">YouTube Channel</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">∞</div>
+                <div class="stat-label">Things to Learn</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">Free</div>
+                <div class="stat-label">Always</div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <nav class="tab-nav">
+            <ul>
+                <li><a href="#" data-sub="sub-articles"  class="active">Articles</a></li>
+                <li><a href="#" data-sub="sub-youtube">YouTube</a></li>
+                <li><a href="#" data-sub="sub-tools">🛠 Tools</a></li>
+            </ul>
+        </nav>
+
+        <!-- Tab Pages -->
+        <div class="sub-pages">
+
+            <!-- ARTICLES -->
+            <div id="sub-articles" class="sub-page active">
+                <h2 class="tab-title">Articles</h2>
+                <div class="article-container">
+
+                    <a href="https://infosecwriteups.com/how-i-was-able-to-modify-ratings-on-a-target-and-cause-business-impact-f690fa0695b8" target="_blank" class="article-card">
+                        <div class="card-thumb">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*bu4FGqq_aFMDlfymvwBXfA.png" alt="">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-date">JUN 01, 2026</span>
+                                <span class="card-tag">BUG BOUNTY</span>
+                            </div>
+                            <h3>How I was able to Modify Ratings on a Target and Cause Business Impact</h3>
+                            <p>6 min read</p>
+                        </div>
+                    </a>
+
+                    <a href="https://medium.com/bugbountywriteup/how-to-get-started-with-cybersecurity-and-ethical-hacking-5f8147d92970" target="_blank" class="article-card">
+                        <div class="card-thumb">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*rUOYgFK602BVPlbVXeWGRg.png" alt="">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-date">APR 19, 2026</span>
+                                <span class="card-tag">BEGINNER</span>
+                            </div>
+                            <h3>How to Get Started with Cybersecurity &amp; Ethical Hacking</h3>
+                            <p>5 min read</p>
+                        </div>
+                    </a>
+
+                    <a href="https://medium.com/bugbountywriteup/how-i-got-a-hall-of-fame-at-a-uefa-champions-league-football-club-bcedc352ce4d" target="_blank" class="article-card">
+                        <div class="card-thumb">
+                            <img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*VkEMToMA50SMPg8Ylo0isA.jpeg" alt="">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-date">MAR 13, 2026</span>
+                                <span class="card-tag">WRITEUP</span>
+                            </div>
+                            <h3>How I Got a Hall of Fame at a UEFA Champions League Club</h3>
+                            <p>10 min read</p>
+                        </div>
+                    </a>
+
+                    <a href="https://infosecwriteups.com/how-to-hack-swagger-ui-complete-guide-9291d9158603" target="_blank" class="article-card">
+                        <div class="card-thumb">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*4MIiORe3WkDUwvjt-M3Cgg.png" alt="">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-date">FEB 04, 2026</span>
+                                <span class="card-tag">GUIDE</span>
+                            </div>
+                            <h3>How to Hack Swagger UI — Complete Guide</h3>
+                            <p>5 min read</p>
+                        </div>
+                    </a>
+
+                    <a href="https://infosecwriteups.com/how-to-find-p1-bugs-using-google-in-your-target-part-3-92080292f4ac" target="_blank" class="article-card">
+                        <div class="card-thumb">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*RT3nQ9yBVb9tQ6gkE1jWbQ.png" alt="">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-date">DEC 25, 2025</span>
+                                <span class="card-tag">GUIDE</span>
+                            </div>
+                            <h3>How to Find P1 Bugs using Google in your Target — (Part-3)</h3>
+                            <p>5 min read</p>
+                        </div>
+                    </a>
+
+                    <a href="https://osintteam.blog/unique-ways-to-recon-for-bug-hunters-short-series-part-2-735d0b2fad2b" target="_blank" class="article-card">
+                        <div class="card-thumb">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*tQd1MFvKiunKpaOtomi_zA.png" alt="">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-date">AUG 26, 2025</span>
+                                <span class="card-tag">GUIDE</span>
+                            </div>
+                            <h3>Unique ways to Recon for Bug Hunters: Short series [Part 2]</h3>
+                            <p>4 min read</p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- YOUTUBE -->
+            <div id="sub-youtube" class="sub-page">
+                <h2 class="tab-title">YouTube Videos</h2>
+                <div class="video-grid">
+                    <div class="video-wrap">
+                        <iframe src="https://www.youtube.com/embed/CLIgZmzkj0o" title="YouTube video" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOOLS -->
+            <div id="sub-tools" class="sub-page">
+                <h2 class="tab-title">Tools by Hack-R Academy</h2>
+                <p class="tools-intro">Open-source recon &amp; security tools built by our team. Free to use, right in your browser.</p>
+                <div class="tools-grid">
+
+                    <a href="https://rivek619.github.io/r-dorker/" target="_blank" class="tool-card">
+                        <div class="tool-icon">🔍</div>
+                        <div class="tool-body">
+                            <div class="tool-tag">RECON</div>
+                            <h3>R-Dorker</h3>
+                            <p>Automates Google Dorking for reconnaissance. Generate advanced search queries against any target domain to uncover exposed files, admin panels, API keys, and more.</p>
+                            <span class="tool-link">Open Tool →</span>
+                        </div>
+                    </a>
+
+                    <a href="https://rivek619.github.io/r-threatrecon/" target="_blank" class="tool-card">
+                        <div class="tool-icon">🕵️</div>
+                        <div class="tool-body">
+                            <div class="tool-tag">RECON</div>
+                            <h3>R-ThreatRecon</h3>
+                            <p>Threat reconnaissance tool for gathering intelligence on a target. Quickly map attack surface, identify exposed services, and build a picture of your target's footprint.</p>
+                            <span class="tool-link">Open Tool →</span>
+                        </div>
+                    </a>
+
+                    <a href="https://rivek619.github.io/r-disclosure/" target="_blank" class="tool-card">
+                        <div class="tool-icon">📋</div>
+                        <div class="tool-body">
+                            <div class="tool-tag">REPORTING</div>
+                            <h3>R-Disclosure</h3>
+                            <p>Responsible disclosure report builder. Helps researchers write clear, professional vulnerability disclosure reports with all the right fields — ready to send to a security team.</p>
+                            <span class="tool-link">Open Tool →</span>
+                        </div>
+                    </a>
+
+                    <a href="https://rivek619.github.io/r-exif/" target="_blank" class="tool-card">
+                        <div class="tool-icon">🖼️</div>
+                        <div class="tool-body">
+                            <div class="tool-tag">FORENSICS</div>
+                            <h3>R-Exif</h3>
+                            <p>Browser-based EXIF metadata extractor. Upload any image to instantly reveal hidden metadata — GPS coordinates, camera model, timestamps, and more. No upload to server.</p>
+                            <span class="tool-link">Open Tool →</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </div><!-- /home-section -->
+
+
+    <!-- ABOUT SECTION -->
+    <div id="about-section" class="about-section">
+
+        <button class="back-btn" onclick="goHome()">← Back to Home</button>
+
+        <div class="section-header">
+            <h1>About Hack-R Academy</h1>
+            <div class="line"></div>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-card">
+                <h2>Our Mission</h2>
+                <p>Hack-R Academy is a cybersecurity learning platform focused on ethical hacking, bug bounty hunting, security research, and practical learning for beginners. Our goal is to help students explore cybersecurity through articles, videos, writeups, and community learning.</p>
+            </div>
+
+            <div class="about-card">
+                <h2>Current Status</h2>
+                <p>We are an active and growing community. Our WhatsApp group, LinkedIn page, and YouTube channel are regularly updated with new content. We publish writeups, vulnerability research, and beginner guides on a rolling basis. The community is free and open to all.</p>
+            </div>
+
+            <div class="founder-card">
+                <div class="founder-avatar"><img src="images/profilepic.png" width= "90px"; height= "90px";></div>
+                <div class="founder-info">
+                    <h2>Rivek Raj Tamang</h2>
+                    <p class="role">// FOUNDER &amp; SECURITY RESEARCHER</p>
+                    <p>Rivek started Hack-R Academy after realising that most cybersecurity resources were either too expensive or too scattered for beginners. He began his own ethical hacking journey by following free resources online, participating in bug bounty programs, and learning through hands-on practice. After achieving a Hall of Fame recognition/Finding bugs/securing the data of numerous companies and government, he decided to build a community where others could follow a similar path — without the noise and cost. Today he leads the platform's content direction and mentors students through the WhatsApp group and LinkedIn page.</p>
+                    <div class="founder-timeline">
+                        <div class="timeline-item"> Hall of Fame<span>50+</span></div>
+                        <div class="timeline-item"> Bug Bounty Hunter<span>Active Researcher</span></div>
+                        <div class="timeline-item"> Content Creator<span>Articles + Videos</span></div>
+                        <div class="timeline-item"> Community Builder<span>Hack-R Academy</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="founder-card">
+                <div class="founder-avatar"><img src="images/photo.png" width= "90px"; height= "90px";></div>
+                <div class="founder-info">
+                    <h2>Arshdeep Singh Minhas</h2>
+                    <p class="role">// COMMUNITY LEAD &amp; STUDENT</p>
+                    <p>Arshdeep is the assitant of Rivek, he just started his journey of computer science, currently learning under Rivek's wing. His role is to manage the overall group, Photo editing, Web development and more in coming years.</p>
+                    <div class="founder-timeline">
+                        <div class="timeline-item"> Student<span>BCA</span></div>
+                        <div class="timeline-item"> Projects<span>Currently working on 1</span></div>
+                        <div class="timeline-item"> Web developer<span>Created this website</span></div>
+                        <div class="timeline-item"> Community Manager<span>Hack-R Academy</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <p style="font-family: 'Share Tech Mono', monospace; font-size: 14px; color: #00ffcc; letter-spacing: 1px;">// Learn. Share. Help. Hack. Repeat.</p>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 16px; color: #e8f5f0; display: inline-block; margin-bottom: 14px;">
+                    HACK-<span class="r">R</span> <span class="academy">ACADEMY</span>
+                </div>
+                <p>A free cybersecurity learning platform for ethical hackers, bug bounty hunters, and security researchers. Learn. Share. Help. Hack. Repeat.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Articles</h4>
+                <ul>
+                    <li><a href="https://infosecwriteups.com/how-i-was-able-to-modify-ratings-on-a-target-and-cause-business-impact-f690fa0695b8" target="_blank">Modify Ratings Bug</a></li>
+                    <li><a href="https://medium.com/bugbountywriteup/how-to-get-started-with-cybersecurity-and-ethical-hacking-5f8147d92970" target="_blank">Get Started in CyberSec</a></li>
+                    <li><a href="https://medium.com/bugbountywriteup/how-i-got-a-hall-of-fame-at-a-uefa-champions-league-football-club-bcedc352ce4d" target="_blank">Hall of Fame Story</a></li>
+                    <li><a href="https://infosecwriteups.com/how-to-hack-swagger-ui-complete-guide-9291d9158603" target="_blank">Hack Swagger UI Guide</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://www.linkedin.com/company/hackracademy/" target="_blank">LinkedIn Page</a></li>
+                    <li><a href="https://www.youtube.com/channel/UClyx7luRqtEFvfDJM3CcmNg" target="_blank">YouTube Channel</a></li>
+                    <li><a href="https://chat.whatsapp.com/DD3NTchIGlF9Fg1tRMSpPs" target="_blank">WhatsApp Group</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="#" onclick="goHome(); return false;">Home</a></li>
+                    <li><a href="#" onclick="showAbout(event); return false;">About Us</a></li>
+                    <li><a href="#" onclick="goToTab('sub-articles'); return false;">Explore Articles</a></li>
+                    <li><a href="#" onclick="goToTab('sub-youtube'); return false;">Videos</a></li>
+                </ul>
+            </div>
+
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="https://rivek619.github.io/r-dorker/" target="_blank">R-Dorker</a></li>
+                    <li><a href="https://rivek619.github.io/r-threatrecon/" target="_blank">R-ThreatRecon</a></li>
+                    <li><a href="https://rivek619.github.io/r-disclosure/" target="_blank">R-Disclosure</a></li>
+                    <li><a href="https://rivek619.github.io/r-exif/" target="_blank">R-Exif</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Hack-R Academy · Founded by Rivek Raj Tamang</p>
+            <span class="footer-tag">// LEARN. HACK. REPEAT.</span>
+        </div>
+    </footer>
+
+    <script src="Main.js"></script>
+</body>
+</html>
