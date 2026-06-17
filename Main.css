@@ -128,29 +128,6 @@ header {
     box-shadow: 0 4px 32px rgba(0,255,204,0.12);
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-}
-
-.logo img {
-    width: 38px; height: 38px;
-    object-fit: contain;
-    mix-blend-mode: screen;
-}
-
-.logo-text {
-    font-family: var(--font-head);
-    font-size: 17px;
-    letter-spacing: 1px;
-    color: var(--white);
-}
-
-.r { color: var(--red); }
-.academy { color: var(--teal); }
-
 .nav-links {
     list-style: none;
     display: flex;
@@ -160,7 +137,7 @@ header {
 .nav-links a {
     text-decoration: none;
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: 17px;
     color: var(--muted);
     padding: 7px 18px;
     border-radius: 4px;
@@ -175,6 +152,71 @@ header {
     border-color: rgba(0,255,204,0.3);
     background: var(--teal-dim);
 }
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+/* ── PORTAL VORTEX — scoped to icon only ── */
+.logo-icon-wrap {
+    position: relative;
+    display: inline-flex;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    overflow: hidden;
+    isolation: isolate;
+    flex-shrink: 0;
+    background: #001a12;
+}
+.logo-icon-wrap img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 6px;
+}
+
+.logo-icon-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -10%;
+    background-image: url("images/portalw.png");
+    background-size: cover;
+    background-position: center;
+    animation: portalSpin 4s linear infinite;
+}
+
+.logo-icon-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 30%, rgba(0,26,18,0.7) 100%);
+    border-radius: 50%;
+}
+
+.logo-icon-wrap img {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes portalSpin {
+    to { transform: rotate(360deg); }
+}
+
+.logo-text {
+    font-family: var(--font-head);
+    font-size: 17px;
+    letter-spacing: 1px;
+    color: var(--white);
+}
+
+.r { color: var(--red); }
+.academy { color: var(--teal); }
 
 /* ─── HAMBURGER ─────────────────────────────────────────── */
 .hamburger {
@@ -199,7 +241,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 80px 10% 60px;
-    min-height: 88vh;
+    min-height: 60vh;
     gap: 40px;
     /* Prevent invisible padding area blocking navbar clicks */
     pointer-events: none;
@@ -218,7 +260,7 @@ header {
     color: var(--teal);
     letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 18px;
+    margin-top: 50px;
     opacity: .8;
 }
 
@@ -282,22 +324,23 @@ header {
     flex-shrink: 0;
 }
 
+
 .hero-image::before {
     content: '';
     position: absolute;
     inset: -30px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,255,204,0.18) 0%, transparent 70%);
-    animation: pulse 4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1);   opacity: .7; }
-    50%       { transform: scale(1.1); opacity: 1;  }
+    background-color: white;
+    border-radius: 12px;
+    border: 2px solid rgba(0,255,204,0.6);
+    box-shadow: 
+        0 0 15px rgba(0,255,204,0.5),
+        0 0 30px rgba(0,255,204,0.3),
+        0 0 50px rgba(0,255,204,0.15);
 }
 
 .hero-image img {
     width: 300px;
+    height: 200px;
     max-width: 100%;
     object-fit: contain;
     position: relative;
@@ -548,7 +591,9 @@ header {
 
 .sub-page { display: none; }
 .sub-page.active { display: block; }
-
+.sub-page {
+    scroll-margin-top: 90px;
+}
 .tab-title {
     font-family: var(--font-head);
     font-size: 28px;
@@ -713,6 +758,39 @@ header {
     font-size: 13px;
     color: var(--muted);
     font-family: var(--font-mono);
+}
+/*________________sort bar design_____________________*/
+
+.sort-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.sort-control select {
+    background: var(--card-bg);
+    color: var(--teal);
+    border: 1px solid rgba(0,255,204,0.25);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color .2s;
+}
+
+.sort-control select:hover,
+.sort-control select:focus {
+    border-color: rgba(0,255,204,0.5);
+}
+
+.sort-control select option {
+    background: var(--card-bg);
+    color: var(--white);
 }
 
 /* ─── VIDEO GRID ─────────────────────────────────────────── */

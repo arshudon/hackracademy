@@ -21,13 +21,17 @@
     <header>
         <nav class="navbar" id="navbar">
             <a class="logo" href="#" onclick="goHome(); return false;">
-                <img src="images/logo.png" alt="logo">
-                <div class="logo-text">HACK-<span class="r">R</span> <span class="academy">ACADEMY</span></div>
+                <div class="logo-icon-wrap">
+                    <img src="images/logo.png" alt="logo">
+                </div>
+                <div class="logo-text">HACK-<span class="r">R</span><span class="academy"> ACADEMY</span></div>
             </a>
 
             <ul class="nav-links" id="navLinks">
                 <li><a href="#" class="active" id="navHome"  onclick="goHome(); return false;">Home</a></li>
                 <li><a href="#" id="navAbout" onclick="showAbout(event)">About Us</a></li>
+                <li><a href="#" id="navContact" onclick="showAbout(event)">Contact Us</a></li>
+
             </ul>
 
             <div class="hamburger" onclick="toggleMenu()">
@@ -43,13 +47,13 @@
         <!-- Hero -->
         <section class="hero">
             <div class="hero-text">
-                <p class="hero-eyebrow">// Cybersecurity Learning Platform</p>
                 <h1>Learn <span>Ethical Hacking</span><br>& Bug Bounty</h1>
                 <p>Build real skills in Cybersecurity, Bug Bounty, and Security Research with Hack-R Academy — a community-first platform for the next generation of ethical hackers.</p>
                 <div class="hero-btns">
                     <a href="#sub-articles" class="btn-primary" onclick="switchTab('sub-articles'); return false;">Explore Articles</a>
                     <a href="#" class="btn-ghost"   onclick="showAbout(event); return false;">About Us</a>
                 </div>
+                <p class="hero-eyebrow">// Cybersecurity Learning Platform</p>
             </div>
             <div class="hero-image">
                 <img src="images/logo.png" alt="Hack-R Academy">
@@ -63,17 +67,18 @@
                 <div class="stat-label">Articles</div>
             </div>
             <div class="stat-item">
-                <div class="stat-num">1</div>
-                <div class="stat-label">YouTube Channel</div>
+                <div class="stat-num">100+</div>
+                <div class="stat-label">Companies Secured</div>
+            </div>
+                        <div class="stat-item">
+                <div class="stat-num">500+</div>
+                <div class="stat-label">Group Members</div>
             </div>
             <div class="stat-item">
                 <div class="stat-num">∞</div>
                 <div class="stat-label">Things to Learn</div>
             </div>
-            <div class="stat-item">
-                <div class="stat-num">Free</div>
-                <div class="stat-label">Always</div>
-            </div>
+
         </div>
 
         <!-- Tabs -->
@@ -82,6 +87,7 @@
                 <li><a href="#" data-sub="sub-articles"  class="active">Articles</a></li>
                 <li><a href="#" data-sub="sub-youtube">YouTube</a></li>
                 <li><a href="#" data-sub="sub-tools">🛠 Tools</a></li>
+                <li><a href="#" data-sub="sub-testimonials">Testimonials</a></li>
             </ul>
         </nav>
 
@@ -90,10 +96,29 @@
 
             <!-- ARTICLES -->
             <div id="sub-articles" class="sub-page active">
-                <h2 class="tab-title">Articles</h2>
-                <div class="article-container">
+                <div class="article-header">
 
-                    <a href="https://infosecwriteups.com/how-i-was-able-to-modify-ratings-on-a-target-and-cause-business-impact-f690fa0695b8" target="_blank" class="article-card">
+
+                    <h2 class="tab-title">Articles</h2>
+                    <div class="sort-control">
+                        <label for="article-sort">Sort by:</label>
+                        <select id="article-sort">
+                            <option value="latest">Latest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="beginner">Beginner Friendly Articles</option>
+                        
+                        </select>
+                    </div>
+                    
+                </div>
+
+
+
+
+
+                <div class="article-container" id="article-container">
+
+                    <a href="https://infosecwriteups.com/how-i-was-able-to-modify-ratings-on-a-target-and-cause-business-impact-f690fa0695b8" target="_blank" class="article-card" data-date="2026-06-01" data-level="3">
                         <div class="card-thumb">
                             <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*bu4FGqq_aFMDlfymvwBXfA.png" alt="">
                         </div>
@@ -107,7 +132,7 @@
                         </div>
                     </a>
 
-                    <a href="https://medium.com/bugbountywriteup/how-to-get-started-with-cybersecurity-and-ethical-hacking-5f8147d92970" target="_blank" class="article-card">
+                    <a href="https://medium.com/bugbountywriteup/how-to-get-started-with-cybersecurity-and-ethical-hacking-5f8147d92970" target="_blank" class="article-card" data-date="2026-04-19" data-level="1">
                         <div class="card-thumb">
                             <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*rUOYgFK602BVPlbVXeWGRg.png" alt="">
                         </div>
@@ -121,9 +146,9 @@
                         </div>
                     </a>
 
-                    <a href="https://medium.com/bugbountywriteup/how-i-got-a-hall-of-fame-at-a-uefa-champions-league-football-club-bcedc352ce4d" target="_blank" class="article-card">
+                    <a href="https://medium.com/bugbountywriteup/how-i-got-a-hall-of-fame-at-a-uefa-champions-league-football-club-bcedc352ce4d" target="_blank" class="article-card" data-date="2026-03-13" data-level="2">
                         <div class="card-thumb">
-                            <img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*VkEMToMA50SMPg8Ylo0isA.jpeg" alt="">
+                            <img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*VkEMToMA50SMPg8Ylo0isA.jpeg" alt="image">
                         </div>
                         <div class="card-body">
                             <div class="card-meta">
@@ -135,9 +160,9 @@
                         </div>
                     </a>
 
-                    <a href="https://infosecwriteups.com/how-to-hack-swagger-ui-complete-guide-9291d9158603" target="_blank" class="article-card">
+                    <a href="https://infosecwriteups.com/how-to-hack-swagger-ui-complete-guide-9291d9158603" target="_blank" class="article-card" data-date="2026-01-04" data-level="3">
                         <div class="card-thumb">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*4MIiORe3WkDUwvjt-M3Cgg.png" alt="">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*4MIiORe3WkDUwvjt-M3Cgg.png" alt="image">
                         </div>
                         <div class="card-body">
                             <div class="card-meta">
@@ -149,9 +174,9 @@
                         </div>
                     </a>
 
-                    <a href="https://infosecwriteups.com/how-to-find-p1-bugs-using-google-in-your-target-part-3-92080292f4ac" target="_blank" class="article-card">
+                    <a href="https://infosecwriteups.com/how-to-find-p1-bugs-using-google-in-your-target-part-3-92080292f4ac" target="_blank" class="article-card" data-date="2025-12-25" data-level="3">
                         <div class="card-thumb">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*RT3nQ9yBVb9tQ6gkE1jWbQ.png" alt="">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*RT3nQ9yBVb9tQ6gkE1jWbQ.png" alt="image">
                         </div>
                         <div class="card-body">
                             <div class="card-meta">
@@ -163,9 +188,9 @@
                         </div>
                     </a>
 
-                    <a href="https://osintteam.blog/unique-ways-to-recon-for-bug-hunters-short-series-part-2-735d0b2fad2b" target="_blank" class="article-card">
+                    <a href="https://osintteam.blog/unique-ways-to-recon-for-bug-hunters-short-series-part-2-735d0b2fad2b" target="_blank" class="article-card" data-date="2025-08-26" data-level="2">
                         <div class="card-thumb">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*tQd1MFvKiunKpaOtomi_zA.png" alt="">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*tQd1MFvKiunKpaOtomi_zA.png" alt="image">
                         </div>
                         <div class="card-body">
                             <div class="card-meta">

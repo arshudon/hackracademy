@@ -38,6 +38,7 @@ function switchTab(id) {
 // ── HOME / ABOUT TOGGLE ────────────────────────────────────
 const homeSection  = document.getElementById("home-section");
 const aboutSection = document.getElementById("about-section");
+const contactSection = document.getElementById("contact-section");
 
 function showAbout(e) {
     if (e) e.preventDefault();
@@ -358,3 +359,47 @@ window.addEventListener("scroll", () => {
     });
     requestAnimationFrame(loop);
 })();
+
+//___________sorting logic______________________________________
+//___________sorting & filtering logic______________________________________
+document.addEventListener("DOMContentLoaded", function () {
+    const articleSort = document.getElementById("article-sort");
+    const articleContainer = document.getElementById("article-container");
+
+    if (articleSort && articleContainer) {
+        articleSort.addEventListener("change", function () {
+            const cards = Array.from(articleContainer.querySelectorAll(".article-card"));
+            const mode = this.value;
+
+            if (mode === "beginner") {
+                // FILTER: show only level 1 cards, hide the rest
+                cards.forEach(card => {
+                    const isBeginner = card.dataset.level === "1";
+                    card.style.display = isBeginner ? "" : "none";
+                });
+                // sort the visible ones by latest date
+                cards
+                    .filter(card => card.dataset.level === "1")
+                    .sort((a, b) => new Date(b.dataset.date) - new Date(a.dataset.date))
+                    .forEach(card => articleContainer.appendChild(card));
+
+            } else {
+                // LATEST / OLDEST: show all cards again
+                cards.forEach(card => { card.style.display = ""; });
+
+                cards.sort((a, b) => {
+                    if (mode === "latest") {
+                        return new Date(b.dataset.date) - new Date(a.dataset.date);
+                    }
+                    if (mode === "oldest") {
+                        return new Date(a.dataset.date) - new Date(b.dataset.date);
+                    }
+                    return 0;
+                });
+                cards.forEach(card => articleContainer.appendChild(card));
+            }
+        });
+    } else {
+        console.warn("Sort elements not found:", articleSort, articleContainer);
+    }
+});
