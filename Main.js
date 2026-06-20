@@ -35,7 +35,7 @@ function switchTab(id) {
 
 }
 
-// ── HOME / ABOUT TOGGLE ────────────────────────────────────
+// ── HOME / ABOUT / CONTACT TOGGLE ────────────────────────────────────
 const homeSection  = document.getElementById("home-section");
 const aboutSection = document.getElementById("about-section");
 const contactSection = document.getElementById("contact-section");
@@ -43,26 +43,43 @@ const contactSection = document.getElementById("contact-section");
 function showAbout(e) {
     if (e) e.preventDefault();
     homeSection.style.display  = "none";
+    contactSection.style.display ="none";
     aboutSection.style.display = "block";
     document.getElementById("navHome").classList.remove("active");
+    document.getElementById("navContact").classList.remove("active")
     document.getElementById("navAbout").classList.add("active");
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function goHome() {
     aboutSection.style.display = "none";
+    contactSection.style.display = "none";
     homeSection.style.display  = "block";
     document.getElementById("navAbout").classList.remove("active");
+    document.getElementById("navContact").classList.remove("active");
     document.getElementById("navHome").classList.add("active");
     window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showContact(e) {
+    if (e) e.preventDefault();
+    homeSection.style.display = "none";
+    aboutSection.style.display = "none";
+    contactSection.style.display = "block";
+    document.getElementById("navHome").classList.remove("active");
+    document.getElementById("navAbout").classList.remove("active")
+    document.getElementById("navContact").classList.add("active");
+    window.scrollTo({ top: 0, behavior: "smooth"})
 }
 
 function goToTab(tabId) {
     // If we're on About page, go back to Home first
     aboutSection.style.display = "none";
+    contactSection.style.display = "none";
     homeSection.style.display = "block";
 
     document.getElementById("navAbout").classList.remove("active");
+    document.getElementById("navContact").classList.remove("active")
     document.getElementById("navHome").classList.add("active");
 
     switchTab(tabId);
@@ -403,3 +420,19 @@ document.addEventListener("DOMContentLoaded", function () {
         console.warn("Sort elements not found:", articleSort, articleContainer);
     }
 });
+
+//_________________contact-us comment box logic ____________________________
+const contactForm = document.getElementById("contact-form");
+if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const name = document.getElementById("contact-name").value;
+        const email = document.getElementById("contact-email").value;
+        const message = document.getElementById("contact-message").value;
+
+        const subject = encodeURIComponent(`Message from ${name}`);
+        const body = encodeURIComponent(`From: ${name} (${email})\n\n${message}`);
+
+        window.location.href = `mailto:contact@hackracademy.com?subject=${subject}&body=${body}`;
+    });
+}
