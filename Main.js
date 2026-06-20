@@ -433,6 +433,6 @@ if (contactForm) {
         const subject = encodeURIComponent(`Message from ${name}`);
         const body = encodeURIComponent(`From: ${name} (${email})\n\n${message}`);
 
-        window.location.href = `mailto:contact@hackracademy.com?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:contact.hackracademy@gmail.com?subject=${subject}&body=${body}`;
     });
 }
