@@ -1169,6 +1169,18 @@ footer {
 }
 .link-email:hover { box-shadow: 0 4px 16px rgba(255,51,51,0.5); }
 
+.link-medium {
+    background: #000000;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+.link-medium:hover { box-shadow: 0 4px 16px rgba(255,255,255,0.15); }
+
+.link-twitter {
+    background: #000000;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+.link-twitter:hover { box-shadow: 0 4px 16px rgba(255,255,255,0.15); }
+
 
 
 /* ─── CONTACT US TAB ─────────────────────────────────────── */
