@@ -1174,11 +1174,15 @@ footer {
 /* ─── CONTACT US TAB ─────────────────────────────────────── */
 
 
-.contact-grid {
+.sessions-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    align-items: start;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+@media (max-width: 768px) {
+    .sessions-row { grid-template-columns: 1fr; }
 }
 
 .contact-card {
@@ -1349,8 +1353,4 @@ footer {
     display: inline-block;
     text-decoration: none;
     text-align: center;
-}
-
-@media (max-width: 768px) {
-    .contact-grid { grid-template-columns: 1fr; }
 }
