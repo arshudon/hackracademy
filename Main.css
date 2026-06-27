@@ -1365,3 +1365,221 @@ footer {
     text-decoration: none;
     text-align: center;
 }
+
+
+/* ── BOOK SESSION PAGE ─────────────────────────────────── */
+.session-page {
+    min-height: 100vh;
+    padding: 60px 8% 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 0 40px;
+    align-items: start;
+}
+
+.session-page-header {
+    text-align: left;
+    grid-column: 1;
+    grid-row: 1;
+    padding-top: 20px;
+}
+
+
+
+/* Future content placeholder — left column below header */
+/* Add content here later and it will naturally fill this space */
+
+.session-page-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--teal);
+    opacity: .7;
+    margin-bottom: 14px;
+}
+
+.session-page-title {
+    font-family: var(--font-head);
+    font-size: clamp(32px, 5vw, 52px);
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.1;
+}
+
+.session-page-sub {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* ── Wheel ─────────────────────────────────────────────── */
+/* Wheel goes on the right, spanning full height */
+.wheel-wrapper {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    position: relative;
+    width: 600px;
+    height: 650px;
+    flex-shrink: 0;
+    justify-self: center;
+}
+
+.wheel-spokes {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Center bubble */
+.wheel-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.overview-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, rgba(0,255,204,0.22), rgba(0,255,204,0.06) 70%);
+    border: 2px solid rgba(0,255,204,0.5);
+    box-shadow: 0 0 0 8px rgba(0,255,204,0.05), 0 0 30px rgba(0,255,204,0.2);
+    text-decoration: none;
+    color: var(--white);
+    text-align: center;
+    transition: transform .3s;
+    animation: centerPulse 3s ease-in-out infinite;
+}
+
+@keyframes centerPulse {
+    0%, 100% { box-shadow: 0 0 0 8px rgba(0,255,204,0.05), 0 0 30px rgba(0,255,204,0.2); }
+    50%       { box-shadow: 0 0 0 14px rgba(0,255,204,0.08), 0 0 50px rgba(0,255,204,0.35); }
+}
+
+.overview-btn:hover { transform: scale(1.08); }
+
+.overview-icon  { font-size: 26px; margin-bottom: 4px; }
+
+.overview-label {
+    font-family: var(--font-head);
+    font-size: 11px;
+    letter-spacing: 1px;
+    line-height: 1.3;
+    color: var(--teal);
+}
+
+.overview-sub {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 1px;
+}
+
+/* Cards */
+.wheel-card { position: absolute; z-index: 1; }
+
+/* Push top card higher so it doesn't overlap center */
+.wheel-card--top {
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.wheel-card--left { bottom: 20px; left: 0; }
+.wheel-card--right{ bottom: 20px; right: 0; }
+
+.wheel-card-inner {
+    width: 185px;
+    background: var(--card-bg);
+    border: 1px solid rgba(0,255,204,0.15);
+    border-radius: 12px;
+    padding: 18px;
+    backdrop-filter: blur(12px);
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+    position: relative;
+    overflow: hidden;
+}
+
+.wheel-card-inner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--green), var(--teal), var(--green));
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity .3s;
+    animation: shimmer 3s linear infinite;
+}
+
+.wheel-card-inner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 40px rgba(0,255,204,0.15), 0 0 0 1px rgba(0,255,204,0.25);
+    border-color: rgba(0,255,204,0.3);
+}
+
+.wheel-card-inner:hover::before { opacity: 1; }
+
+.wheel-card-inner .mentor-badge  { font-size: 9px; padding: 2px 8px; margin-bottom: 10px; }
+.wheel-card-inner h3             { font-family: var(--font-body); font-size: 13px; font-weight: 700; color: var(--white); line-height: 1.45; margin-bottom: 10px; }
+
+.wheel-card-meta {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.wheel-card-meta span { font-family: var(--font-mono); font-size: 10px; color: var(--muted); }
+
+.wheel-card-inner .mentor-pricing { gap: 8px; margin-bottom: 14px; }
+.wheel-card-inner .price-item     { padding: 8px 6px; }
+.wheel-card-inner .price-label    { font-size: 9px; }
+.wheel-card-inner .price-value    { font-size: 15px; }
+
+.wheel-card-inner .mentor-book-btn {
+    font-size: 11px;
+    padding: 8px 16px;
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .wheel-wrapper {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .wheel-center  { position: static; transform: none; margin-bottom: 8px; }
+    .wheel-spokes  { display: none; }
+    .wheel-card    { position: static; transform: none; }
+    .wheel-card-inner { width: 100%; max-width: 340px; }
+}
+@media (max-width: 900px) {
+    .session-page {
+        grid-template-columns: 1fr;
+    }
+    .wheel-wrapper {
+        grid-column: 1;
+        grid-row: 2;
+        width: 100%;
+        height: auto;
+        justify-self: center;
+    }
+}

@@ -39,14 +39,17 @@ function switchTab(id) {
 const homeSection  = document.getElementById("home-section");
 const aboutSection = document.getElementById("about-section");
 const contactSection = document.getElementById("contact-section");
+const sessionSection = document.getElementById("session-section");
 
 function showAbout(e) {
     if (e) e.preventDefault();
     homeSection.style.display  = "none";
     contactSection.style.display ="none";
+    sessionSection.style.display = "none";
     aboutSection.style.display = "block";
     document.getElementById("navHome").classList.remove("active");
     document.getElementById("navContact").classList.remove("active")
+    document.getElementById("navSession").classList.remove("active")
     document.getElementById("navAbout").classList.add("active");
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -54,9 +57,11 @@ function showAbout(e) {
 function goHome() {
     aboutSection.style.display = "none";
     contactSection.style.display = "none";
+    sessionSection.style.display = "none";
     homeSection.style.display  = "block";
     document.getElementById("navAbout").classList.remove("active");
     document.getElementById("navContact").classList.remove("active");
+    document.getElementById("navSession").classList.remove("active")
     document.getElementById("navHome").classList.add("active");
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -65,21 +70,38 @@ function showContact(e) {
     if (e) e.preventDefault();
     homeSection.style.display = "none";
     aboutSection.style.display = "none";
+    sessionSection.style.display = "none";
     contactSection.style.display = "block";
     document.getElementById("navHome").classList.remove("active");
     document.getElementById("navAbout").classList.remove("active")
+    document.getElementById("navSession").classList.remove("active")
     document.getElementById("navContact").classList.add("active");
     window.scrollTo({ top: 0, behavior: "smooth"})
+}
+
+function showSession(e) {
+    if (e) e.preventDefault();
+    homeSection.style.display = "none";
+    aboutSection.style.display = "none";
+    contactSection.style.display = "none";
+    sessionSection.style.display = "block"
+    document.getElementById("navHome").classList.remove("active");
+    document.getElementById("navAbout").classList.remove("active")
+    document.getElementById("navContact").classList.remove("active")
+    document.getElementById("navSession").classList.add("active")
+    window.scrollTo({ top:0, behavior: "smooth"})
 }
 
 function goToTab(tabId) {
     // If we're on About page, go back to Home first
     aboutSection.style.display = "none";
     contactSection.style.display = "none";
+    sessionSection.style.display = "none";
     homeSection.style.display = "block";
 
     document.getElementById("navAbout").classList.remove("active");
     document.getElementById("navContact").classList.remove("active")
+    document.getElementById("navSession").classList.remove("active");
     document.getElementById("navHome").classList.add("active");
 
     switchTab(tabId);
