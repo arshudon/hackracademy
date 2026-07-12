@@ -306,6 +306,36 @@ header {
     filter: drop-shadow(0 0 40px rgba(0,255,204,0.4));
 }
 
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        padding: 40px 6% 30px;
+        min-height: auto;
+        align-items: stretch;
+    }
+
+    .hero-image {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        min-height: 220px;
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-image::before {
+        inset: 0;            /* fills full width with only the 6% page padding as gap */
+    }
+
+    .hero-image img {
+        width: 60%;          /* centered logo inside the box */
+        height: auto;
+    }
+}
+
 /* ─── STATS BAR ──────────────────────────────────────────── */
 .stats-bar {
     display: flex;
