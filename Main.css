@@ -160,12 +160,15 @@ header {
     text-decoration: none;
 }
 
-.logo img {
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
-    flex-shrink: 0;
+.logo-text {
+    font-family: var(--font-head);
+    font-size: 17px;
+    letter-spacing: 1px;
+    color: var(--white);
 }
+
+.r { color: var(--red); }
+.academy { color: var(--teal); }
 
 /* ─── HAMBURGER ─────────────────────────────────────────── */
 .hamburger {
