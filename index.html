@@ -476,105 +476,91 @@
 
     <!-- BOOK SESSION SECTION -->
     <div id="session-section" style="display: none;">
-
         <div class="session-page">
 
+            <!-- Header -->
             <div class="session-page-header">
                 <button class="back-btn" onclick="goHome()">← Back to Home</button>
                 <p class="session-page-eyebrow">// 1:1 MENTOR SESSIONS</p>
                 <h1 class="session-page-title">Book a Session</h1>
                 <p class="session-page-sub">Choose a session that fits your goal. All sessions are conducted online via Zoom or Google Meet.</p>
+
+            </div>
+            <a href="session-overview.pdf" target="_blank" class="overview-pill">
+                📄 Session Overview — View PDF
+            </a>
+
+            <!-- Session Cards Grid -->
+            <div class="session-cards-grid">
+
+                <!-- CARD 1 -->
+                <div class="session-card">
+                    <div class="mentor-badge">BEGINNER</div>
+                    <h3 class="session-card-title">Introduction to CyberSecurity &amp; Ethical Hacking</h3>
+                    <div class="session-card-meta">
+                        <span>🎥 Online</span>
+                        <span>⏱ 90 mins</span>
+                    </div>
+                    <p class="session-card-desc">Get a solid foundation in cybersecurity. Learn the mindset, tools, and techniques needed to start your journey into ethical hacking.</p>
+                    <div class="mentor-pricing">
+                        <div class="price-item">
+                            <span class="price-label">Students</span>
+                            <span class="price-value">₹399</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Professionals</span>
+                            <span class="price-value">₹599</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/919593285657?text=Hi!%20I%20would%20like%20to%20book%20the%20%22Introduction%20to%20CyberSecurity%20%26%20Ethical%20Hacking%22%20session.%20I%20am%20interested%20in%20learning%20the%20fundamentals%20of%20cybersecurity%20and%20ethical%20hacking.%20Please%20share%20the%20available%20slots%20and%20further%20details." target="_blank" class="btn-primary mentor-book-btn">Book →</a>
                 </div>
 
-                <div class="wheel-wrapper">
-
-                    <!-- SVG spokes -->
-                    <svg class="wheel-spokes" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-                        <line x1="300" y1="300" x2="300" y2="80"  stroke="rgba(0,255,204,0.2)" stroke-width="1" stroke-dasharray="6 4"/>
-                        <line x1="300" y1="300" x2="90"  y2="450" stroke="rgba(0,255,204,0.2)" stroke-width="1" stroke-dasharray="6 4"/>
-                        <line x1="300" y1="300" x2="510" y2="450" stroke="rgba(0,255,204,0.2)" stroke-width="1" stroke-dasharray="6 4"/>
-                        <circle cx="300" cy="300" r="145" fill="none" stroke="rgba(0,255,204,0.08)" stroke-width="1" stroke-dasharray="4 6"/>
-                    </svg>
-
-                    <!-- CENTER -->
-                    <div class="wheel-center">
-                        <a href="Session_Overview.pdf" target="_blank" class="overview-btn">
-                            <div class="overview-icon">📄</div>
-                            <span class="overview-label">Session<br>Overview</span>
-                            <span class="overview-sub">View PDF</span>
-                        </a>
+                <!-- CARD 2 -->
+                <div class="session-card">
+                    <div class="mentor-badge">POPULAR</div>
+                    <h3 class="session-card-title">Introduction to Bug Bounty Hunting &amp; Guidance</h3>
+                    <div class="session-card-meta">
+                        <span>🎥 Online</span>
+                        <span>⏱ 120 mins</span>
                     </div>
-
-                    <!-- CARD 1 — top -->
-                    <div class="wheel-card wheel-card--top">
-                        <div class="wheel-card-inner">
-                            <div class="mentor-badge">BEGINNER</div>
-                            <h3>Introduction to CyberSecurity &amp; Ethical Hacking</h3>
-                            <div class="wheel-card-meta">
-                                <span>🎥 Online</span>
-                                <span>⏱ 90 mins</span>
-                            </div>
-                            <div class="mentor-pricing">
-                                <div class="price-item">
-                                    <span class="price-label">Students</span>
-                                    <span class="price-value">₹399</span>
-                                </div>
-                                <div class="price-item">
-                                    <span class="price-label">Professionals</span>
-                                    <span class="price-value">₹599</span>
-                                </div>
-                            </div>
-                            <a href="https://topmate.io/rivudon/1573512" target="_blank" class="btn-primary mentor-book-btn">Book →</a>
+                    <p class="session-card-desc">Start your bug bounty journey. Learn how to find vulnerabilities, report them professionally, and get your first bounty.</p>
+                    <div class="mentor-pricing">
+                        <div class="price-item">
+                            <span class="price-label">Students</span>
+                            <span class="price-value">₹499</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Professionals</span>
+                            <span class="price-value">₹699</span>
                         </div>
                     </div>
-
-                    <!-- CARD 2 — bottom left -->
-                    <div class="wheel-card wheel-card--left">
-                        <div class="wheel-card-inner">
-                            <div class="mentor-badge">POPULAR</div>
-                            <h3>Introduction to Bug Bounty Hunting &amp; Guidance</h3>
-                            <div class="wheel-card-meta">
-                                <span>🎥 Online</span>
-                                <span>⏱ 120 mins</span>
-                            </div>
-                            <div class="mentor-pricing">
-                            <div class="price-item">
-                                <span class="price-label">Students</span>
-                                <span class="price-value">₹499</span>
-                            </div>
-                            <div class="price-item">
-                                <span class="price-label">Professionals</span>
-                                <span class="price-value">₹699</span>
-                            </div>
-                        </div>
-                        <a href="https://topmate.io/rivudon/1573540" target="_blank" class="btn-primary mentor-book-btn">Book →</a>
-                    </div>
+                    <a href="https://wa.me/919593285657?text=Hi!%20I%20would%20like%20to%20book%20the%20%22Introduction%20to%20Bug%20Bounty%20Hunting%20%26%20Guidance%22%20session.%20I%20want%20to%20learn%20about%20finding%20and%20reporting%20vulnerabilities%20and%20getting%20started%20with%20bug%20bounties.%20Please%20share%20the%20available%20slots%20and%20additional%20information." target="_blank" class="btn-primary mentor-book-btn">Book →</a>
                 </div>
 
-                <!-- CARD 3 — bottom right -->
-                <div class="wheel-card wheel-card--right">
-                    <div class="wheel-card-inner">
-                        <div class="mentor-badge">BONUS</div>
-                        <h3>1:1 Personalized Session</h3>
-                        <div class="wheel-card-meta">
-                            <span>🎥 Online</span>
-                            <span>⏱ 150 mins</span>
-                        </div>
-                        <div class="mentor-pricing">
-                            <div class="price-item">
-                                <span class="price-label">Students</span>
-                                <span class="price-value">₹999</span>
-                            </div>
-                            <div class="price-item">
-                                <span class="price-label">Professionals</span>
-                                <span class="price-value">₹1499</span>
-                            </div>
-                        </div>
-                        <a href="mailto:cybersecrivek@gmail.com?subject=Personalized Session Request" class="btn-primary mentor-book-btn">Enquire →</a>
+                <!-- CARD 3 — BONUS (glowing) -->
+                <div class="session-card session-card--bonus">
+                    <div class="bonus-glow-ring"></div>
+                    <div class="mentor-badge badge-bonus">✦ BONUS</div>
+                    <h3 class="session-card-title">1:1 Personalized Session</h3>
+                    <div class="session-card-meta">
+                        <span>🎥 Online</span>
+                        <span>⏱ 150 mins</span>
                     </div>
+                    <p class="session-card-desc">A fully personalized deep-dive session tailored to your specific goals, skill level, and target area. Bring your questions — we go where you need to go.</p>
+                    <div class="mentor-pricing">
+                        <div class="price-item">
+                            <span class="price-label">Students</span>
+                            <span class="price-value">₹999</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Professionals</span>
+                            <span class="price-value">₹1499</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/919593285657?text=Hi!%20I%20am%20interested%20in%20the%201%3A1%20Personalized%20Session.%20I%20would%20like%20guidance%20tailored%20to%20my%20goals%20and%20skill%20level.%20Please%20let%20me%20know%20the%20available%20slots%20and%20how%20we%20can%20proceed." target="_blank" class="btn-primary mentor-book-btn">Book →</a>
                 </div>
 
-            </div><!-- /wheel-wrapper -->
+            </div><!-- /session-cards-grid -->
         </div><!-- /session-page -->
     </div><!-- /session-section -->
 
