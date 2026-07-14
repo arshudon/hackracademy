@@ -1414,7 +1414,7 @@ footer {
     text-decoration: none;
     transition: .2s;
     align-self: flex-end;
-    margin-bottom: 32px;
+    margin-top: 32px;
 }
 
 .overview-pill:hover {
