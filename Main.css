@@ -1413,7 +1413,7 @@ footer {
     border-radius: 6px;
     text-decoration: none;
     transition: .2s;
-    align-self: flex-end;
+    align-self: center;
     margin-top: 32px;
 }
 
