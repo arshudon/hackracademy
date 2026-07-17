@@ -273,12 +273,12 @@ header {
 /* Glowing orb image wrapper */
 .hero-image {
     position: relative;
-    flex: 1;
-    min-height: 100%;
+    flex: 0 0 40%;
+    min-height: 300%;
+    max-height: 380px;
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 55%;
     margin-left: 60px;
     margin-right: 0;
 }
@@ -315,11 +315,11 @@ header {
     }
 
     .hero-image {
-        width: 100%;
-        max-width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-        min-height: 220px;
+        width: 90%;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        min-height: 160px;
         margin-top: 24px;
         display: flex;
         align-items: center;
@@ -331,7 +331,7 @@ header {
     }
 
     .hero-image img {
-        width: 60%;          /* centered logo inside the box */
+        width: 50%;          /* centered logo inside the box */
         height: auto;
     }
 }
