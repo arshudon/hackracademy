@@ -1009,8 +1009,19 @@ footer {
 
 .tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+@media (max-width: 992px) {
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .tool-card {
@@ -1414,7 +1425,7 @@ footer {
     text-decoration: none;
     transition: .2s;
     align-self: center;
-    margin-top: 32px;
+    margin-top: 34px;
 }
 
 .overview-pill:hover {
@@ -1486,67 +1497,41 @@ footer {
     flex: 1;
 }
 
-/* ── BONUS card ────────────────────────────────────────── */
-.session-card--bonus {
-    border-color: rgba(0,255,204,0.35);
-    background: linear-gradient(
-        145deg,
-        rgba(4,26,18,0.95) 0%,
-        rgba(0,40,28,0.95) 100%
-    );
-    animation: bonusGlow 3s ease-in-out infinite;
+/* ── BONUS card wrapper ─────────────────────────────────── */
+.bonus-card-wrapper {
+    position: relative;
+    border-radius: 14px;
+    border: 1.5px solid rgba(0,255,204,0.8);
+    box-shadow:
+        0 0 8px rgba(0,255,204,0.6),
+        0 0 20px rgba(0,255,204,0.3),
+        0 0 40px rgba(0,255,204,0.12);
+    animation: bonusNeonPulse 2.5s ease-in-out infinite;
 }
 
-@keyframes bonusGlow {
+@keyframes bonusNeonPulse {
     0%, 100% {
         box-shadow:
-            0 0 0 1px rgba(0,255,204,0.3),
-            0 0 20px rgba(0,255,204,0.12),
-            0 0 40px rgba(0,255,204,0.06);
+            0 0 8px rgba(0,255,204,0.6),
+            0 0 20px rgba(0,255,204,0.3),
+            0 0 40px rgba(0,255,204,0.12);
+        border-color: rgba(0,255,204,0.8);
     }
     50% {
         box-shadow:
-            0 0 0 1px rgba(0,255,204,0.55),
-            0 0 30px rgba(0,255,204,0.25),
-            0 0 60px rgba(0,255,204,0.12);
+            0 0 12px rgba(0,255,204,0.9),
+            0 0 30px rgba(0,255,204,0.5),
+            0 0 60px rgba(0,255,204,0.2);
+        border-color: rgba(0,255,204,1);
     }
 }
 
-.bonus-glow-ring {
-    position: absolute;
-    top: -40%;
-    left: -40%;
-    width: 180%;
-    height: 180%;
-    border-radius: 50%;
-    background: conic-gradient(
-        from 0deg,
-        transparent 0%,
-        rgba(0,255,204,0.06) 20%,
-        rgba(0,255,136,0.12) 40%,
-        rgba(0,255,204,0.06) 60%,
-        transparent 80%
-    );
-    animation: ringRotate 8s linear infinite;
-    pointer-events: none;
-    z-index: 0;
-}
-
-@keyframes ringRotate {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-}
-
-.session-card--bonus > *:not(.bonus-glow-ring) {
-    position: relative;
-    z-index: 1;
-}
-
-.badge-bonus {
-    background: linear-gradient(135deg, rgba(0,255,136,0.2), rgba(0,255,204,0.15));
-    color: var(--teal);
-    border-color: rgba(0,255,204,0.5);
-    box-shadow: 0 0 10px rgba(0,255,204,0.2);
+.bonus-card-wrapper:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 0 16px rgba(0,255,204,1),
+        0 0 40px rgba(0,255,204,0.6),
+        0 0 80px rgba(0,255,204,0.25);
 }
 
 /* ── Mobile ────────────────────────────────────────────── */
