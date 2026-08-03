@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon2.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon1.png">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>R-Dorker</title>
+<style>
+/* Import a fun and modern hacker-style font */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+body {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: #0d0d0d;
+    color: #00ff88;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1100px;
+    width: 90%;
+    margin: 50px auto;
+    padding: 25px;
+    background-color: #121212;
+    border: 1px solid #00ff88;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+h1 {
+    text-align: center;
+    font-size: 42px;
+    color: #00ff88;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #00ff88;
+}
+
+p {
+    text-align: center;
+    font-size: 16px;
+    color: #a0ffa0;
+    margin: 10px 0;
+}
+
+.input-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+input {
+    width: 60%;
+    padding: 14px;
+    background-color: #000;
+    color: #00ff88;
+    border: 2px solid #00ff88;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px #00ff88;
+}
+
+input::placeholder {
+    color: #44ff88;
+    opacity: 0.6;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 16px;
+    border: 2px solid #00ff88;
+    border-radius: 6px;
+    background-color: transparent;
+    color: #00ff88;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px #00ff88;
+}
+
+button:hover {
+    background-color: #00ff88;
+    color: #000;
+    box-shadow: 0 0 15px #00ff88;
+}
+
+hr {
+    border: 1px solid #00ff88;
+    margin: 30px 0;
+    opacity: 0.2;
+}
+
+.dork-category {
+    margin-bottom: 30px;
+}
+
+.dork-category h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #00ff88;
+    text-align: center;
+    text-shadow: 0 0 5px #00ff88;
+}
+
+.dork-category table {
+    width: 100%;
+    text-align: center;
+    border-spacing: 10px;
+}
+
+table td {
+    width: 33%;
+}
+
+table a {
+    display: block;
+    padding: 12px;
+    border: 2px solid #00ff88;
+    background-color: transparent;
+    color: #00ff88;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 0 8px #00ff88;
+}
+
+table a:hover {
+    background-color: #00ff88;
+    color: #000;
+    box-shadow: 0 0 15px #00ff88;
+}
+
+#dorkResults h2 {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #00ff88;
+    text-shadow: 0 0 8px #00ff88;
+}
+
+/* Responsive Layout */
+@media screen and (max-width: 768px) {
+    input {
+        width: 80%;
+    }
+
+    table td {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    table a {
+        margin: 10px auto;
+    }
+}
+
+.footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 20px;
+    border-top: 1px solid #00ff88;
+    color: #00ff88;
+    font-size: 16px;
+    background-color: #0d0d0d;
+}
+
+.social-buttons {
+    margin-top: 10px;
+}
+
+.social-link {
+    display: inline-block;
+    margin: 10px 15px;
+    padding: 10px 25px;
+    border: 2px solid #00ff88;
+    color: #00ff88;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 0 8px #00ff88;
+}
+
+.social-link:hover {
+    background-color: #00ff88;
+    color: #000;
+    box-shadow: 0 0 15px #00ff88;
+}
+
+.linkedin {
+    background-color: transparent;
+}
+
+.github {
+    background-color: transparent;
+}
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>R-Dorker</h1>
+    <p>
+      R-Dorker is a web-based tool that automates Google Dorking for reconnaissance. It offers a simple interface for users to perform advanced search queries on custom targets, making information gathering easier and more accessible.
+    </p>
+       <p>- Created by <b>RivuDon - Rivek Raj Tamang</b></p>
+
+    <div class="input-section">
+      <label for="domain">Enter Target Domain:</label>
+      <input type="text" id="domain" placeholder="target.com" />
+      <button onclick="generateDorks()">Generate</button>
+    </div>
+
+    <hr />
+
+    <div id="dorkResults">
+      <h2>Google Dorks</h2>
+
+      <!-- Information Disclosure -->
+      <div class="dork-category">
+        <h3>(Information Disclosure)</h3>
+        <table>
+          <tr>
+            <td><a href="#" id="directoryListing" target="_blank">Directory Listing</a></td>
+            <td><a href="#" id="configurationFiles" target="_blank">Configuration Files</a></td>
+            <td><a href="#" id="databaseFiles" target="_blank">Database Files</a></td>
+          </tr>
+        </table>
+      </div>
+      <hr />
+
+      <div class="dork-category">
+        <table>
+          <tr>
+            <td><a href="#" id="logFiles" target="_blank">Log Files</a></td>
+            <td><a href="#" id="gitFolder" target="_blank">Git Folder</a></td>
+            <td><a href="#" id="backupFiles" target="_blank">Backup Files</a></td>
+          </tr>
+        </table>
+      </div>
+      <hr />
+
+      <div class="dork-category">
+        <table>
+          <tr>
+            <td><a href="#" id="exposedFiles" target="_blank">Exposed Files</a></td>
+            <td><a href="#" id="apikeySecrets" target="_blank">API Keys & Secrets</a></td>
+            <td><a href="#" id="exposedAdminPanels" target="_blank">Admin Panels</a></td>
+          </tr>
+        </table>
+      </div>
+      <hr />
+
+      <center><h3>(Third-Party Exposure)</h3></center>
+      <div class="dork-category">
+        <table>
+          <tr>
+            <td><a href="#" id="exposeds3" target="_blank">Exposed AWS S3</a></td>
+            <td><a href="#" id="exposedGoogleDrive" target="_blank">Google Drive/Docs</a></td>
+            <td><a href="#" id="pastebinLeaks" target="_blank">Pastebin Leaks</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Connect with me:</p>
+      <div class="social-buttons">
+        <a href="https://www.linkedin.com/in/rivektamang/" target="_blank" class="social-link linkedin">LinkedIn</a>
+        <a href="https://github.com/Rivek619" target="_blank" class="social-link github">GitHub</a>
+      </div>
+    </div>
+  </div>
+
+<script>
+function generateDorks() {
+    let domain = document.getElementById("domain").value.trim();
+    
+    if (domain === "") {
+        alert("Please enter a domain!");
+        return;
+    }
+
+    document.getElementById("directoryListing").href = `https://www.google.com/search?q=site%3A*.${domain}+intitle%3A%22Index+of+%2F%22+OR+inurl%3A%2F`;
+    document.getElementById("configurationFiles").href = `https://www.google.com/search?q=site%3A*.${domain}+(ext:env | ext:xml | ext:json | ext:yaml | ext:conf | ext:config intext:password)`;
+    document.getElementById("databaseFiles").href = `https://www.google.com/search?q=site%3A*.${domain}+(ext%3Asql+OR+ext%3Adb+OR+inurl%3A.bak)`;
+    document.getElementById("logFiles").href = `https://www.google.com/search?q=site%3A*.${domain}+(ext%3Alog+OR+inurl%3Alogs+OR+ext%3Atxt+inurl%3Alog)`;
+    document.getElementById("gitFolder").href = `https://www.google.com/search?q=site%3A*.${domain}+(inurl%3A.git+OR+intitle%3A%22git+repository%22+OR+inurl%3A.git%2Fconfig)`;
+    document.getElementById("backupFiles").href = `https://www.google.com/search?q=site%3A*.${domain}+(ext:bak | ext:old | ext:backup)`;
+    document.getElementById("exposedFiles").href = `https://www.google.com/search?q=site%3A*.${domain}+(ext:doc OR ext:docx OR ext:odt OR ext:pdf OR ext:rtf OR ext:ppt OR ext:pptx OR ext:csv OR ext:xls OR ext:xlsx OR ext:txt OR ext:xml OR ext:json OR ext:zip OR ext:rar OR ext:md OR ext:log OR ext:bak OR ext:conf OR ext:sql)`;
+    document.getElementById("apikeySecrets").href = `https://www.google.com/search?q=site%3A*.${domain}+(intext:"api_key" | "secret_key" | "access_token" | "auth_key")`;
+    document.getElementById("exposedAdminPanels").href = `https://www.google.com/search?q=site%3A*.${domain}+(inurl:admin | inurl:dashboard | inurl:admin login)`;
+
+    document.getElementById("exposeds3").href = `https://www.google.com/search?q=site:s3.amazonaws.com inurl:${domain}`;
+    document.getElementById("exposedGoogleDrive").href = `https://www.google.com/search?q=(site:drive.google.com OR site:docs.google.com) ${domain} ("confidential" OR "internal")`;
+    document.getElementById("pastebinLeaks").href = `https://www.google.com/search?q=site:pastebin.com ${domain}`;
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon2.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon1.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>R-Disclosure</title>
+
+<style>
+
+body{
+    font-family: Consolas, monospace;
+    background:#0a0a0a;
+    color:#ff8800;
+    text-align:center;
+    padding:15px 20px 40px;
+    margin:0;
+}
+
+h2{
+    color:#ff8800;
+    text-shadow:0 0 10px #ff8800;
+    margin-bottom:25px;
+}
+
+input{
+    padding:12px;
+    width:90%;
+    max-width:400px;
+    background:#111;
+    border:2px solid #ff8800;
+    color:#fff;
+    font-size:16px;
+    border-radius:5px;
+}
+
+button{
+    padding:12px 20px;
+    margin-top:15px;
+    background:#ff8800;
+    border:none;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:5px;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#ffa733;
+    box-shadow:0 0 10px #ff8800;
+}
+
+.results{
+    margin-top:30px;
+}
+
+.results a{
+    display:block;
+    margin:12px auto;
+    width:90%;
+    max-width:600px;
+    padding:12px;
+    background:#111;
+    border:1px solid #ff8800;
+    text-decoration:none;
+    color:#ff8800;
+    border-radius:5px;
+    transition:0.3s;
+    word-wrap:break-word;
+}
+
+.results a:hover{
+    background:#ff8800;
+    color:black;
+    box-shadow:0 0 10px #ff8800;
+}
+
+.footer{
+    margin-top:60px;
+    font-size:14px;
+    color:#aaa;
+}
+
+.footer a{
+    color:#ff8800;
+    text-decoration:none;
+    margin:0 10px;
+}
+
+.footer a:hover{
+    text-decoration:underline;
+}
+
+/* Mobile Optimization */
+
+@media (max-width:600px){
+
+h2{
+    font-size:22px;
+}
+
+button{
+    width:90%;
+    max-width:400px;
+}
+
+.results a{
+    font-size:14px;
+    padding:10px;
+}
+
+.footer{
+    font-size:13px;
+}
+
+}
+
+.hero{
+    max-width:850px;
+    margin:0 auto 35px;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:48px;
+    color:#ff8800;
+    text-shadow:0 0 15px rgba(255,136,0,.7);
+    margin-bottom:15px;
+}
+
+.description{
+    color:#d6d6d6;
+    font-size:14px;
+    line-height:1.8;
+    max-width:750px;
+    margin:0 auto;
+    text-align:center;
+}
+
+.description strong{
+    color:#ff8800;
+}
+
+.description span{
+    color:#ffb347;
+    font-weight:bold;
+}
+
+@media (max-width:768px){
+
+.hero{
+    padding:10px;
+}
+
+.hero h1{
+    font-size:34px;
+}
+
+.description{
+    font-size:16px;
+    line-height:1.7;
+    padding:0 10px;
+}
+
+}
+
+@media (max-width:480px){
+
+.hero h1{
+    font-size:28px;
+}
+
+.description{
+    font-size:15px;
+    line-height:1.6;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="hero">
+    <h1>R-Disclosure</h1>
+
+    <p class="description">
+        <strong>R-Disclosure</strong> helps security researchers quickly find
+        <span>Vulnerability Disclosure Programs</span>,
+        <span>Responsible Disclosure Policies</span>, and
+        <span>Bug Bounty Programs</span> for any domain.
+    </p>
+</div>
+<input type="text" id="domainInput" placeholder="Enter domain (example.com)">
+<br>
+
+<button onclick="generateLinks()">Generate Links</button>
+
+<div class="results" id="results"></div>
+
+<script>
+
+function generateLinks(){
+
+const domain=document.getElementById("domainInput").value.trim();
+const resultsDiv=document.getElementById("results");
+
+resultsDiv.innerHTML="";
+
+if(!domain){
+alert("Enter a domain first");
+return;
+}
+
+const topics=[
+"bug bounty",
+"vulnerability disclosure program",
+"responsible disclosure program",
+"security email"
+];
+
+topics.forEach(topic=>{
+
+const query=`${domain} ${topic}`;
+const url=`https://www.google.com/search?q=${encodeURIComponent(query)}`;
+
+const link=document.createElement("a");
+link.href=url;
+link.target="_blank";
+link.textContent=`Google: ${query}`;
+
+resultsDiv.appendChild(link);
+
+});
+
+/* FireBounty */
+
+const firebounty=`https://firebounty.com/?sort=created_at&order=desc&search_field=name&search=${encodeURIComponent(domain)}`;
+
+const fbLink=document.createElement("a");
+fbLink.href=firebounty;
+fbLink.target="_blank";
+fbLink.textContent=`🔥 Search on FireBounty for ${domain}`;
+
+resultsDiv.appendChild(fbLink);
+
+
+/* OpenBugBounty */
+
+const obb=`https://www.openbugbounty.org/search/?search=${encodeURIComponent(domain)}`;
+
+const obbLink=document.createElement("a");
+obbLink.href=obb;
+obbLink.target="_blank";
+obbLink.textContent=`🐞 Search on OpenBugBounty for ${domain}`;
+
+resultsDiv.appendChild(obbLink);
+
+
+/* Disclose.io */
+
+const disclose=`https://disclose.io/programs/`;
+
+const discloseLink=document.createElement("a");
+discloseLink.href=disclose;
+discloseLink.target="_blank";
+discloseLink.textContent=`📜 Browse Programs on Disclose.io`;
+
+resultsDiv.appendChild(discloseLink);
+
+}
+
+</script>
+
+<div class="footer">
+
+Made with <3 by <strong>Rivek Raj Tamang (RivuDon)</strong><br><br>
+
+<a href="https://www.linkedin.com/in/rivektamang/" target="_blank">LinkedIn</a> |
+<a href="https://rivudon.medium.com/" target="_blank">Medium</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon2.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon1.png">
+
+<meta charset="UTF-8">
+<title>R-EXIF | Rivudon</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<style>
+body {
+  font-family: monospace;
+  background: #020617;
+  color: #38bdf8;
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #0ea5e9;
+}
+
+input {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  background: #020617;
+  color: #38bdf8;
+  border: 1px solid #0ea5e9;
+}
+
+.hidden { display: none; }
+
+.grid {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.left {
+  flex: 0 0 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.right {
+  flex: 0 0 45%;
+}
+
+/* BOX */
+.box {
+  background: #020617;
+  border: 1px solid #0ea5e9;
+  box-shadow: 0 0 10px #0ea5e9;
+  height: fit-content;
+}
+
+.box h3 {
+  margin: 0;
+  padding: 10px;
+  background: #0c4a6e;
+  border-bottom: 1px solid #0ea5e9;
+  display: flex;
+  justify-content: space-between;
+}
+
+.box-content {
+  padding: 10px;
+}
+
+#map {
+  height: 300px;
+}
+
+img {
+  width: 100%;
+  border: 1px solid #0ea5e9;
+}
+
+/* ✅ NO SCROLLBAR */
+.table-wrapper {
+  max-height: none;
+  overflow: visible;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 6px;
+  border-bottom: 1px solid #0ea5e9;
+  vertical-align: top;
+}
+
+td:first-child {
+  width: 40%;
+  color: #7dd3fc;
+}
+
+td:last-child {
+  width: 60%;
+  color: #e0f2fe;
+  word-break: break-word;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+#dropZone {
+  max-width: 700px;
+  margin: 25px auto;
+  padding: 1px;
+  text-align: center;
+  border: 2px dashed #0ea5e9;
+  cursor: pointer;
+  transition: 0.3s;
+  background: rgba(14,165,233,0.05);
+}
+
+#dropZone:hover {
+  box-shadow: 0 0 15px #0ea5e9;
+  background: rgba(14,165,233,0.1);
+}
+
+.upload-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #38bdf8;
+}
+
+.upload-subtitle {
+  margin-top: 10px;
+  color: #7dd3fc;
+  font-size: 16px;
+}
+
+.top-banner {
+  width: 700px;
+  margin: 20px auto;
+
+  text-align: center;
+  padding: 10px;
+
+  background: #020617;
+  border: 2px solid #0ea5e9;
+  color: #38bdf8;
+  font-weight: bold;
+
+  box-shadow: 0 0 10px #0ea5e9;
+}
+
+.top-banner a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.top-banner a:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>R-EXIF 🔍</h1>
+
+<div id="dropZone">
+  <input type="file" id="imageInput" accept="image/*" hidden>
+
+  <div class="upload-title">Select Image</div>
+
+  <div class="upload-subtitle">
+    Drag & Drop any image file
+  </div>
+</div>
+
+<div id="content" class="hidden">
+
+<div id="summary" style="text-align:center; margin-bottom:10px;"></div>
+
+<div class="grid">
+
+<!-- LEFT -->
+<div class="left">
+
+<div class="box">
+<h3>Camera Make & Model</h3>
+<div class="box-content" id="cameraInfo"></div>
+</div>
+
+<div class="box">
+<h3>Camera Location</h3>
+<div class="box-content">
+<div id="gpsText"></div>
+<div id="map"></div>
+</div>
+</div>
+
+<div class="box">
+<h3>Image Preview</h3>
+<div class="box-content" id="preview"></div>
+</div>
+
+</div>
+
+<!-- RIGHT -->
+<div class="right">
+
+<div class="box">
+<h3>
+All Photo EXIF Data
+<label style="font-size:12px;">
+<input type="checkbox" id="toggleSerial" checked>
+Hide Serial Numbers
+</label>
+</h3>
+
+<div class="box-content table-wrapper">
+<table id="exifTable"></table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="top-banner">
+  Created by <strong>Rivek Raj Tamang (Rivudon)</strong> |
+  <a href="https://www.linkedin.com/in/rivektamang/" target="_blank">LinkedIn</a> |
+  <a href="https://medium.com/@rivudon" target="_blank">Medium</a>
+</div>
+
+</div>
+
+<!-- Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/exifr/dist/full.umd.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+const dropZone = document.getElementById("dropZone");
+const input = document.getElementById("imageInput");
+const content = document.getElementById("content");
+const preview = document.getElementById("preview");
+const table = document.getElementById("exifTable");
+const cameraInfo = document.getElementById("cameraInfo");
+const gpsText = document.getElementById("gpsText");
+const summary = document.getElementById("summary");
+const toggleSerial = document.getElementById("toggleSerial");
+
+dropZone.addEventListener("click", () => {
+  input.click();
+});
+
+dropZone.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  dropZone.style.borderColor = "#38bdf8";
+});
+
+dropZone.addEventListener("dragleave", () => {
+  dropZone.style.borderColor = "#0ea5e9";
+});
+
+dropZone.addEventListener("drop", (e) => {
+  e.preventDefault();
+
+  dropZone.style.borderColor = "#0ea5e9";
+
+  if (e.dataTransfer.files.length > 0) {
+    input.files = e.dataTransfer.files;
+    input.dispatchEvent(new Event("change"));
+  }
+});
+
+let map;
+
+/* FORMAT SAFE */
+function formatValue(val) {
+  if (val instanceof Uint8Array) return Array.from(val).join(", ");
+  if (Array.isArray(val)) return val.join(", ");
+  if (typeof val === "object" && val !== null) return JSON.stringify(val);
+  return val;
+}
+
+function shouldHide(key) {
+  if (!toggleSerial.checked) return false;
+  return key.toLowerCase().includes("serial");
+}
+
+/* SAFE TABLE */
+function renderTable(data) {
+  table.innerHTML = "";
+
+  for (let key in data) {
+    if (shouldHide(key)) continue;
+
+    const tr = document.createElement("tr");
+
+    const tdKey = document.createElement("td");
+    tdKey.textContent = key;
+
+    const tdValue = document.createElement("td");
+    const value = formatValue(data[key]);
+    tdValue.textContent = value;
+
+    // highlight suspicious payloads
+    if (/script|onerror|alert/i.test(value)) {
+      tdValue.style.color = "red";
+    }
+
+    tr.appendChild(tdKey);
+    tr.appendChild(tdValue);
+    table.appendChild(tr);
+  }
+}
+
+input.addEventListener("change", async function () {
+  const file = this.files[0];
+  if (!file) return;
+
+  content.classList.remove("hidden");
+
+  // preview
+  preview.innerHTML = "";
+  const img = document.createElement("img");
+  img.src = URL.createObjectURL(file);
+  preview.appendChild(img);
+
+  try {
+    const data = await exifr.parse(file);
+
+    if (!data) {
+      table.textContent = "No EXIF metadata found";
+      return;
+    }
+
+    summary.textContent = `${data.FocalLength || ''} mm | ISO ${data.ISO || ''} | f/${data.FNumber || ''}`;
+    cameraInfo.textContent = `${data.Make || ''} - ${data.Model || ''}`;
+
+    renderTable(data);
+    toggleSerial.onchange = () => renderTable(data);
+
+    if (data.latitude && data.longitude) {
+      gpsText.textContent = `GPS Location:📍 ${data.latitude}, ${data.longitude}`;
+
+      if (map) map.remove();
+
+     map = L.map('map').setView(
+  [data.latitude, data.longitude],
+  12
+);
+
+L.tileLayer(
+  'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+  {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap'
+  }
+).addTo(map);
+
+L.marker([
+  data.latitude,
+  data.longitude
+]).addTo(map);
+
+setTimeout(() => {
+  map.invalidateSize();
+}, 200);
+    } else {
+      gpsText.textContent = "No GPS Data Found";
+    }
+
+  } catch (err) {
+    console.error(err);
+    table.textContent = "Error reading EXIF data";
+  }
+});
+</script>
+
+</body>
+</html>

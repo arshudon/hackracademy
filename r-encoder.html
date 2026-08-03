@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon2.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon1.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R-Encoder</title>
+
+<style>
+:root {
+    --green: #00ff88;
+    --dark: #020617;
+    --black: #000000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Courier New", monospace;
+    background: radial-gradient(circle at top, #02150a, #000);
+    color: var(--green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.app {
+    width: 100%;
+    max-width: 520px;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid #00ff8855;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 25px #00ff8833;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px #00ff88;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 90px;
+    background: #000;
+    color: var(--green);
+    border: 1px solid #00ff8855;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 14px;
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 10px #00ff8866;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+button {
+    padding: 12px;
+    background: #001a0d;
+    border: 1px solid var(--green);
+    color: var(--green);
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background: var(--green);
+    color: #000;
+    box-shadow: 0 0 12px var(--green);
+}
+
+button.full {
+    grid-column: span 2;
+}
+
+.output {
+    margin-top: 10px;
+}
+
+.footer {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.85;
+}
+
+.footer-links {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.social-btn {
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--green);
+    color: var(--green);
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.social-btn:hover {
+    background: var(--green);
+    color: #000;
+    box-shadow: 0 0 10px var(--green);
+}
+
+@media (max-width: 480px) {
+    textarea {
+        min-height: 110px;
+    }
+    .buttons {
+        grid-template-columns: 1fr;
+    }
+    button.full {
+        grid-column: span 1;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+    <h1>R-Encoder</h1>
+    <div class="subtitle">Encode • Decode • Exploit Knowledge</div>
+
+    <textarea id="input" placeholder="Enter payload here..."></textarea>
+
+    <div class="buttons">
+        <button onclick="encodeURL()">URL Encode</button>
+        <button onclick="encodeHex()">Full Hex Encode</button>
+        <button onclick="encodeBase64()">Base64 Encode</button>
+        <button onclick="decodeBase64()">Base64 Decode</button>
+        <button onclick="decodeURL()" class="full">URL Decode</button>
+        <button onclick="clearAll()" class="full">Clear</button>
+    </div>
+
+    <div class="output">
+        <textarea id="output" placeholder="Output..." readonly></textarea>
+    </div>
+
+    <div class="footer">
+        Made with &lt;3 by <b>Rivek Raj Tamang (Rivudon)</b>
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/rivektamang/" target="_blank">
+                <div class="social-btn">LinkedIn</div>
+            </a>
+            <a href="https://rivudon.medium.com/" target="_blank">
+                <div class="social-btn">Medium</div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+function getSource() {
+    const input = document.getElementById("input").value;
+    const output = document.getElementById("output").value;
+    return output !== "" ? output : input;
+}
+
+/* URL Encode  (multi-click) */
+function encodeURL() {
+    document.getElementById("output").value =
+        encodeURIComponent(getSource());
+}
+
+/* Full Hex Encode (multi-click) */
+function encodeHex() {
+    const src = getSource();
+    let encoded = "";
+    for (let i = 0; i < src.length; i++) {
+        encoded += "%" + src.charCodeAt(i).toString(16).toUpperCase();
+    }
+    document.getElementById("output").value = encoded;
+}
+
+/* Base64 Encode (multi-click) */
+function encodeBase64() {
+    try {
+        const src = getSource();
+        const encoded = btoa(unescape(encodeURIComponent(src)));
+        document.getElementById("output").value = encoded;
+    } catch {
+        document.getElementById("output").value = "Base64 encoding failed";
+    }
+}
+
+/* Base64 Decode */
+function decodeBase64() {
+    try {
+        const src = getSource();
+        const decoded = decodeURIComponent(escape(atob(src)));
+        document.getElementById("output").value = decoded;
+    } catch {
+        document.getElementById("output").value = "Invalid Base64 payload";
+    }
+}
+
+/* URL Decode */
+function decodeURL() {
+    try {
+        document.getElementById("output").value =
+            decodeURIComponent(getSource());
+    } catch {
+        document.getElementById("output").value = "Invalid encoded payload";
+    }
+}
+
+function clearAll() {
+    document.getElementById("input").value = "";
+    document.getElementById("output").value = "";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon2.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon1.png">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>R-Threat Recon Intelligence</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  background: #000;
+  color: #ff2e2e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 15px;
+}
+
+h1 {
+  text-align: center;
+  color: #ff0000;
+  text-shadow: 0 0 12px #ff0000;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+p {
+  text-align: center;
+  color: #ff4d4d;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+#input {
+  width: 100%;
+  max-width: 600px;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ff0000;
+  background: #111;
+  color: #ff2e2e;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+#input:focus {
+  box-shadow: 0 0 10px #ff0000;
+}
+
+button {
+  width: 100%;
+  max-width: 600px;
+  background-color: #111;
+  color: #ff2e2e;
+  font-weight: bold;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ff0000;
+  border-radius: 6px;
+  margin: 6px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff0000;
+  color: #000;
+  box-shadow: 0 0 15px #ff0000;
+}
+
+#results {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link-group {
+  width: 100%;
+  max-width: 700px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.section h3 {
+  width: 100%;
+  text-align: center;
+  color: #ff4d4d;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #330000;
+  padding-bottom: 6px;
+}
+
+.social-buttons {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 25px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.social-buttons button {
+  flex: 1;
+  max-width: 290px;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 12px;
+  color: #550000;
+  text-align: center;
+}
+
+/* Mobile Optimization */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  #input {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 13px;
+    padding: 10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h1>🔎 R-Threat Recon Intelligence</h1>
+<p>Enter a domain or multiple domains (comma-separated)</p>
+
+<input type="text" id="input" placeholder="e.g. target.com, sub.target.com">
+<button onclick="generateLinks()">▶ Run Recon</button>
+
+<div id="results"></div>
+
+<div class="social-buttons">
+  <button onclick="window.open('https://www.linkedin.com/in/rivektamang/', '_blank')">LinkedIn</button>
+  <button onclick="window.open('https://rivudon.medium.com/', '_blank')">Medium</button>
+</div>
+
+<footer>— RivuDon | Rivek Raj Tamang</footer>
+
+<script>
+function generateLinks() {
+  const input = document.getElementById('input').value;
+  const domains = input.split(',').map(s => s.trim()).filter(Boolean);
+  const results = document.getElementById('results');
+  results.innerHTML = '';
+
+  domains.forEach(domain => {
+
+    const domainContainer = document.createElement('div');
+    domainContainer.className = 'link-group';
+
+    function createSection(title, tools) {
+      const section = document.createElement('div');
+      section.className = 'section';
+
+      const heading = document.createElement('h3');
+      heading.textContent = title;
+      section.appendChild(heading);
+
+      tools.forEach(tool => {
+        const btn = document.createElement('button');
+        btn.textContent = tool.name;
+        btn.onclick = () => window.open(tool.url, '_blank');
+        section.appendChild(btn);
+      });
+
+      return section;
+    }
+
+    // 🔎 Search & Archive
+    domainContainer.appendChild(createSection("🔎 Search & Archive", [
+      { name: "Web Archive", url: `https://web.archive.org/cdx/search/cdx?url=*.${domain}&fl=original&collapse=urlkey` },
+      { name: "Google", url: `https://www.google.com/search?q=site:${domain}` },
+      { name: "Yahoo", url: `https://search.yahoo.com/search?p=site:${domain}` },
+      { name: "Bing", url: `https://www.bing.com/search?q=site:${domain}` },
+      { name: "DuckDuckGo", url: `https://duckduckgo.com/?q=site:${domain}` }
+    ]));
+
+    // 🌐 Infrastructure & DNS
+    domainContainer.appendChild(createSection("🌐 Infrastructure & DNS", [
+      { name: "SecurityTrails", url: `https://securitytrails.com/domain/${domain}` },
+      { name: "Shodan", url: `https://www.shodan.io/search?query=${domain}` },
+      { name: "Censys", url: `https://platform.censys.io/search?q=${domain}` },
+      { name: "ViewDNS Whois", url: `https://viewdns.info/whois/?domain=${domain}` },
+      { name: "CRT.sh", url: `https://crt.sh/?q=${domain}` }
+    ]));
+
+    // 📂 Exposure & Leak Intelligence
+    domainContainer.appendChild(createSection("📂 Exposure & Leak Intelligence", [
+      { name: "GitHub Dork", url: `https://github.com/search?q=${domain}` },
+      { name: "PublicWWW (JS Exposure)", url: `https://publicwww.com/websites/${domain}/` },
+      { name: "Pastebin Dork", url: `https://www.google.com/search?q=site:pastebin.com+${domain}` },
+      { name: "AlienVault OTX", url: `https://otx.alienvault.com/indicator/domain/${domain}` }
+    ]));
+
+    // 🛡 Reputation & Threat Intelligence
+    domainContainer.appendChild(createSection("🛡 Reputation & Threat Intelligence", [
+      { name: "VirusTotal", url: `https://www.virustotal.com/gui/domain/${domain}` },
+      { name: "URLScan", url: `https://urlscan.io/search/#${domain}` },
+      { name: "AbuseIPDB", url: `https://www.abuseipdb.com/check/${domain}` },
+      { name: "Talos Intelligence", url: `https://talosintelligence.com/reputation_center/lookup?search=${domain}` }
+    ]));
+
+    results.appendChild(domainContainer);
+  });
+}
+</script>
+
+</body>
+</html>

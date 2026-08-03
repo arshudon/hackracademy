@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="images/favicon1.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Main.css">
+    <link rel="stylesheet" href="preset-2.css">
 </head>
 
 <body>
@@ -27,7 +27,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#" class="active" id="navHome"  onclick="goHome(); return false;">Home</a></li>
                 <li><a href="#" id="navAbout" onclick="showAbout(event)">About Us</a></li>
-                <li><a href="#" id="navSession" onclick="showSession(event)">Book Session</a></li>                
+                <li><a href="#" id="navSession" onclick="showSession(event)">Book Session</a></li>
+                <li><a href="#" id="navTools" onclick="showTools(event)"> Tools</a></li>                
                 <li><a href="#" id="navContact" onclick="showContact(event)"> Contact Us</a></li>
 
 
@@ -87,7 +88,6 @@
                 <li><a href="#" data-sub="sub-youtube">YouTube</a></li>
                 <li><a href="#" data-sub="sub-tools">🛠 Tools</a></li>
                 <li><a href="#" data-sub="sub-testimonials">Testimonials</a></li>
-                <li><a href="#" data-sub="sub-session">1:1 Session</a></li>
             </ul>
         </nav>
 
@@ -221,7 +221,7 @@
                 <p class="tools-intro">Open-source recon &amp; security tools built by our team. Free to use, right in your browser.</p>
                 <div class="tools-grid">
 
-                    <a href="https://rivek619.github.io/r-dorker/" target="_blank" class="tool-card">
+                    <a href="https://www.hackracademy.com/r-dorker.html" target="_blank" class="tool-card">
                         <div class="tool-icon">🔍</div>
                         <div class="tool-body">
                             <div class="tool-tag">RECON</div>
@@ -231,7 +231,7 @@
                         </div>
                     </a>
 
-                    <a href="https://rivek619.github.io/r-threatrecon/" target="_blank" class="tool-card">
+                    <a href="https://www.hackracademy.com/r-threatrecon.html" target="_blank" class="tool-card">
                         <div class="tool-icon">🕵️</div>
                         <div class="tool-body">
                             <div class="tool-tag">RECON</div>
@@ -241,7 +241,7 @@
                         </div>
                     </a>
 
-                    <a href="https://rivek619.github.io/r-disclosure/" target="_blank" class="tool-card">
+                    <a href="https://www.hackracademy.com/r-disclosure.html" target="_blank" class="tool-card">
                         <div class="tool-icon">📋</div>
                         <div class="tool-body">
                             <div class="tool-tag">REPORTING</div>
@@ -251,7 +251,7 @@
                         </div>
                     </a>
 
-                    <a href="https://rivek619.github.io/r-exif/" target="_blank" class="tool-card">
+                    <a href="https://www.hackracademy.com/r-exif.html" target="_blank" class="tool-card">
                         <div class="tool-icon">🖼️</div>
                         <div class="tool-body">
                             <div class="tool-tag">FORENSICS</div>
@@ -262,71 +262,8 @@
                     </a>
 
                 </div>
-            </div>
-            <!-- Mentor 1:1 session -->
-           <div id="sub-session" class="sub-page">
-                <h2 class="tab-title">1:1 Mentor Sessions</h2>
-                <div class="sessions-row">
-
-                    <!-- LEFT: Comment / Message Form -->
-                    <!-- session 1 -->
-                    <div class="contact-card mentor-card">
-                        <div class="mentor-badge">1:1 MENTOR SESSION</div>
-                        <h3 class="contact-card-title">Introduction to CyberSecurity and Ethical Hacking</h3>
-                        <div class="mentor-meta">
-                            <div class="mentor-meta-item">
-                                <span class="meta-label">Mode</span>
-                                <span class="meta-value">Video Meeting (Zoom/ Google Meet)</span>
-                            </div>
-                            <div class="mentor-meta-item">
-                                <span class="meta-label">Duration</span>
-                                <span class="meta-value">90 mins</span>
-                            </div>
-                        </div>
-                        <p class="mentor-desc">1:1 Session on CyberSecurity and Ethical Hacking.</p>
-                        <div class="mentor-pricing">
-                            <div class="price-item">
-                                <span class="price-label">Students</span>
-                                <span class="price-value">₹399</span>
-                            </div>
-                            <div class="price-item">
-                                <span class="price-label">Professionals</span>
-                                <span class="price-value">₹599</span>
-                            </div>
-                        </div>
-                        <a href="https://topmate.io/rivudon/1573512" class="btn-primary mentor-book-btn" target="_blank">Book a Session</a>
-                    </div>
-
-                    <!-- session 2 -->
-                    <div class="contact-card mentor-card">
-                        <div class="mentor-badge">1:1 MENTOR SESSION &middot; POPULAR</div>
-                        <h3 class="contact-card-title">Introduction to Bug Bounty Hunting and Guidance</h3>
-                        <div class="mentor-meta">
-                            <div class="mentor-meta-item">
-                                <span class="meta-label">Mode</span>
-                                <span class="meta-value">Video Meeting (Zoom / Google Meet)</span>
-                            </div>
-                            <div class="mentor-meta-item">
-                                <span class="meta-label">Duration</span>
-                                <span class="meta-value">120 mins</span>
-                            </div>
-                        </div>
-                        <p class="mentor-desc">1:1 session Introduction and Guidance to Bug Bounty Hunting.</p>
-                        <div class="mentor-pricing">
-                            <div class="price-item">
-                                <span class="price-label">Students</span>
-                                <span class="price-value">₹499</span>
-                            </div>
-                            <div class="price-item">
-                                <span class="price-label">Professionals</span>
-                                <span class="price-value">₹699</span>
-                            </div>
-                        </div>
-                        <a href="https://topmate.io/rivudon/1573540" class="btn-primary mentor-book-btn" target="_blank">Book a Session</a>
-                    </div>
-                </div> <!--/session-row-->
-            </div> <!-- /sub-page -->
-        </div>
+             </div> <!-- tools -->
+        </div><!-- tab pages -->
     </div><!-- /home-section -->
 
 
@@ -446,6 +383,89 @@
 
     </div>
 
+
+<!-- ----------------------------------------------------------------------TOOLS-1ST NAVBAR ------------------------------------------------------------------- -->
+
+    <div id="tools-section" style="display: none;">
+        <div class="session-page">
+            
+            <div class="session-page-header">
+                <button class="back-btn" onclick="goHome()">← Back to Home</button>
+                <p class="session-page-eyebrow">// OPEN SOURCE TOOLS</p>
+                <h1 class="session-page-title">Tools by Hack-R Academy</h1>
+                <p class="session-page-sub">Free browser-based recon and security tools. No install needed.</p>
+            </div>
+
+            <div class="tools-grid">
+                <a href="https://www.hackracademy.com/r-dorker.html" target="_blank" class="tool-card">
+                    <div class="tool-icon">🔍</div>
+                    <div class="tool-body">
+                        <div class="tool-tag">RECON</div>
+                        <h3>R-Dorker</h3>
+                        <p>Automates Google Dorking for reconnaissance. Generate advanced search queries against any target domain to uncover exposed files, admin panels, API keys, and more.</p>
+                        <span class="tool-link">Open Tool →</span>
+                    </div>
+                </a>
+
+                <a href="https://www.hackracademy.com/r-disclosure.html" target="_blank" class="tool-card">
+                    <div class="tool-icon">🕵️</div>
+                    <div class="tool-body">
+                        <div class="tool-tag">REPORTING</div>
+                        <h3>R-Disclosure</h3>
+                        <p>Responsible disclosure report builder. Helps researchers write clear, professional vulnerability disclosure reports — ready to send to a security team.</p>
+                        <span class="tool-link">Open Tool →</span>
+                    </div>
+                </a>
+                <a href="https://www.hackracademy.com/r-exif.html" target="_blank" class="tool-card">
+                    <div class="tool-icon">🖼️</div>
+                    <div class="tool-body">
+                        <div class="tool-tag">FORENSICS</div>
+                        <h3>R-Exif</h3>
+                        <p>Browser-based EXIF metadata extractor. Upload any image to instantly reveal hidden metadata — GPS coordinates, camera model, timestamps, and more. No upload to server.</p>
+                        <span class="tool-link">Open Tool →</span>
+                    </div>
+                </a>
+                <a href="https://www.hackracademy.com/r-encoder.html" target="_blank" class="tool-card">
+                    <div class="tool-icon">🔐</div>
+                    <div class="tool-body">
+                        <div class="tool-tag">ENCODING</div>
+                        <h3>R-Encoder</h3>
+                        <p>Multi-format text encoder and decoder. Instantly convert data between Base64, URL, HTML, Hex, Binary, and other common formats for security testing and development.</p>
+                        <span class="tool-link">Open Tool →</span>
+                    </div>
+                    
+                </a>
+                <a href="https://www.hackracademy.com/r-clickjack.html" target="_blank" class="tool-card">
+                    <div class="tool-icon">🖱️</div>
+                    <div class="tool-body">
+                        <div class="tool-tag">WEB SECURITY</div>
+                        <h3>R-CLickjack</h3>
+                        <p>Interactive clickjacking testing tool. Embed websites inside an iframe to quickly verify frame protection headers and identify potential clickjacking vulnerabilities in a safe environment.</p>
+                        <span class="tool-link">Open Tool →</span>
+                    </div>
+                </a>
+                <a href="https://www.hackracademy.com/r-threatrecon.html" target="_blank" class="tool-card">
+                    <div class="tool-icon">🕵️</div>
+                    <div class="tool-body">
+                        <div class="tool-tag">THREAT INTELLIGENCE</div>
+                        <h3>R-Threatrecon</h3>
+                        <p>Browser-based threat intelligence toolkit. Analyze IP addresses, domains, URLs, and file hashes with quick access to multiple OSINT and reputation sources for faster security investigations.</p>
+                        <span class="tool-link">Open Tool →</span>
+                    </div>
+                </a>
+
+
+
+
+                
+            </div>
+        </div>
+        
+    </div>
+
+
+
+
 <!-- CONTACT US -->
     <div id="contact-section" style="display: none;">
         <h2 class="tab-title">Contact Us</h2>
@@ -483,7 +503,9 @@
                 <p class="session-page-sub">Choose a session that fits your goal. All sessions are conducted online via Zoom or Google Meet.</p>
 
             </div>
-
+<!--             <a href="Session_Overview.pdf" target="_blank" class="overview-pill">
+                📄 Session Overview — View PDF
+            </a> -->
 
             <!-- Session Cards Grid -->
             <div class="session-cards-grid">
@@ -533,34 +555,88 @@
                 </div>
 
                 <!-- CARD 3 — BONUS (glowing) -->
-                <div class="session-card session-card--bonus">
-                    <div class="bonus-glow-ring"></div>
-                    <div class="mentor-badge badge-bonus">✦ BONUS</div>
-                    <h3 class="session-card-title">1:1 Personalized Session</h3>
-                    <div class="session-card-meta">
-                        <span>🎥 Online</span>
-                        <span>⏱ 150 mins</span>
-                    </div>
-                    <p class="session-card-desc">A fully personalized deep-dive session tailored to your specific goals, skill level, and target area. Bring your questions — we go where you need to go.</p>
-                    <div class="mentor-pricing">
-                        <div class="price-item">
-                            <span class="price-label">Students</span>
-                            <span class="price-value">₹999</span>
+
+                        <!-- SVG filter definition — place this right after <body> tag or before the footer -->
+                        <svg style="position:absolute;width:0;height:0;overflow:hidden;">
+                            <defs>
+                                <filter id="electric-filter" colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1"/>
+                                    <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
+                                        <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite" calcMode="linear"/>
+                                    </feOffset>
+                                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1"/>
+                                    <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
+                                        <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite" calcMode="linear"/>
+                                    </feOffset>
+                                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise3" seed="2"/>
+                                    <feOffset in="noise3" dx="0" dy="0" result="offsetNoise3">
+                                        <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite" calcMode="linear"/>
+                                    </feOffset>
+                                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise4" seed="2"/>
+                                    <feOffset in="noise4" dx="0" dy="0" result="offsetNoise4">
+                                        <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite" calcMode="linear"/>
+                                    </feOffset>
+                                    <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1"/>
+                                    <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2"/>
+                                    <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise"/>
+                                    <feDisplacementMap in="SourceGraphic" in2="combinedNoise" scale="30" xChannelSelector="R" yChannelSelector="B"/>
+                                </filter>
+                            </defs>
+                        </svg>
+
+
+
+                        <div class="bonus-card-wrapper">
+
+                                <div class="bonus-inner">
+                                    <div class="bonus-border-outer">
+                                        <div class="bonus-electric-border"></div>
+                                    </div>
+                                    <div class="bonus-glow-1"></div>
+                                    <div class="bonus-glow-2"></div>
+                                </div>
+
+                                <div class="bonus-overlay-1"></div>
+                                <div class="bonus-overlay-2"></div>
+                                <div class="bonus-bg-glow"></div>
+
+                            <div class="bonus-card-wrapper">
+                                <div class="session-card session-card--bonus">
+                                    <div class="mentor-badge badge-bonus">✦ BONUS</div>
+                                    <h3 class="session-card-title">1:1 Personalized Session</h3>
+                                    <div class="session-card-meta">
+                                        <span>🎥 Online</span>
+                                        <span>⏱ 150 mins</span>
+                                    </div>
+                                    <p class="session-card-desc">A fully personalized deep-dive session tailored to your specific goals, skill level, and target area. Bring your questions — we go where you need to go.</p>
+                                    <div class="mentor-pricing">
+                                        <div class="price-item">
+                                            <span class="price-label">Students</span>
+                                            <span class="price-value">₹999</span>
+                                        </div>
+                                        <div class="price-item">
+                                            <span class="price-label">Professionals</span>
+                                            <span class="price-value">₹1499</span>
+                                        </div>
+                                    </div>
+                                    <a href="https://wa.me/919593285657?text=Hi!%20I%20am%20interested%20in%20the%201%3A1%20Personalized%20Session.%20I%20would%20like%20guidance%20tailored%20to%20my%20goals%20and%20skill%20level.%20Please%20let%20me%20know%20the%20available%20slots%20and%20how%20we%20can%20proceed." target="_blank" class="btn-primary mentor-book-btn">Book →</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="price-item">
-                            <span class="price-label">Professionals</span>
-                            <span class="price-value">₹1499</span>
-                        </div>
-                    </div>
-                    <a href="https://wa.me/919593285657?text=Hi!%20I%20am%20interested%20in%20the%201%3A1%20Personalized%20Session.%20I%20would%20like%20guidance%20tailored%20to%20my%20goals%20and%20skill%20level.%20Please%20let%20me%20know%20the%20available%20slots%20and%20how%20we%20can%20proceed." target="_blank" class="btn-primary mentor-book-btn">Book →</a>
-                </div>
 
             </div><!-- /session-cards-grid -->
+
             <a href="Session_Overview.pdf" target="_blank" class="overview-pill">
                 📄 Session Overview — View PDF
             </a>
+
         </div><!-- /session-page -->
     </div><!-- /session-section -->
+
+
+
+
+<!-- --------------------------------------------------------------FOOTERR------------------------------ -->
 
 
 
@@ -626,6 +702,6 @@
         </div>
     </footer>
 
-    <script src="Main.js"></script>
+    <script src="preset-2.js"></script>
 </body>
 </html>
