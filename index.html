@@ -86,7 +86,7 @@
             <ul>
                 <li><a href="#" data-sub="sub-articles"  class="active">Articles</a></li>
                 <li><a href="#" data-sub="sub-youtube">YouTube</a></li>
-                <li><a href="#" data-sub="sub-tools">🛠 Tools</a></li>
+                <li><a href="#" data-sub="sub-tools">Tools</a></li>
                 <li><a href="#" data-sub="sub-testimonials">Testimonials</a></li>
             </ul>
         </nav>
@@ -209,11 +209,32 @@
             <div id="sub-youtube" class="sub-page">
                 <h2 class="tab-title">YouTube Videos</h2>
                 <div class="video-grid">
+
+
                     <div class="video-wrap">
-                        <iframe src="https://www.youtube.com/embed/CLIgZmzkj0o" title="YouTube video" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/IhZTnip0p3I?si=3SIEB1ziKM3MndOw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
+            
+                    <div class="video-wrap">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/CLIgZmzkj0o?si=96rc-sNLu13MWe0e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+
                 </div>
             </div>
+
+
+
+
+<!-- -----------------------------------------------------------------youtube/end---------------------------------------------------------------------------- -->
+
+
+
+
+
+
+
+
+
 
             <!-- TOOLS -->
             <div id="sub-tools" class="sub-page">
@@ -260,6 +281,25 @@
                             <span class="tool-link">Open Tool →</span>
                         </div>
                     </a>
+                    <a href="https://www.hackracademy.com/r-clickjack.html" target="_blank" class="tool-card">
+                        <div class="tool-icon">🖱️</div>
+                        <div class="tool-body">
+                            <div class="tool-tag">WEB SECURITY</div>
+                            <h3>R-CLickjack</h3>
+                            <p>Interactive clickjacking testing tool. Embed websites inside an iframe to quickly verify frame protection headers and identify potential clickjacking vulnerabilities in a safe environment.</p>
+                            <span class="tool-link">Open Tool →</span>
+                        </div>
+                    </a>
+                    <a href="https://www.hackracademy.com/r-threatrecon.html" target="_blank" class="tool-card">
+                        <div class="tool-icon">🕵️</div>
+                        <div class="tool-body">
+                            <div class="tool-tag">THREAT INTELLIGENCE</div>
+                            <h3>R-Threatrecon</h3>
+                            <p>Browser-based threat intelligence toolkit. Analyze IP addresses, domains, URLs, and file hashes with quick access to multiple OSINT and reputation sources for faster security investigations.</p>
+                            <span class="tool-link">Open Tool →</span>
+                        </div>
+                    </a>
+
 
                 </div>
              </div> <!-- tools -->
@@ -643,10 +683,9 @@
 
 
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-grid">
-
+    
             <div class="footer-brand">
                 <div style="font-family: 'Orbitron', sans-serif; font-size: 16px; color: #e8f5f0; display: inline-block; margin-bottom: 14px;">
                     HACK-<span class="r">R</span> <span class="academy">ACADEMY</span>
@@ -665,32 +704,36 @@
             </div>
 
             <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="https://www.hackracademy.com/r-dorker.html" target="_blank">R-Dorker</a></li>
+                    <li><a href="https://www.hackracademy.com/r-threatrecon.html" target="_blank">R-ThreatRecon</a></li>
+                    <li><a href="https://www.hackracademy.com/r-disclosure.html" target="_blank">R-Disclosure</a></li>
+                    <li><a href="https://www.hackracademy.com/r-exif.html" target="_blank">R-Exif</a></li>
+                    <li><a href="https://www.hackracademy.com/r-encoder.html" target="_blank">R-Encoder</a></li>
+                    <li><a href="https://www.hackracademy.com/r-clickjack.html" target="_blank">R-Clickjack</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
                 <h4>Community</h4>
                 <ul>
                     <li><a href="https://www.linkedin.com/company/hackracademy/" target="_blank">LinkedIn Page</a></li>
-                    <li><a href="https://www.youtube.com/channel/UClyx7luRqtEFvfDJM3CcmNg" target="_blank">YouTube Channel</a></li>
+                    <li><a href="https://www.youtube.com/@hackracademy" target="_blank">YouTube Channel</a></li>
                     <li><a href="https://chat.whatsapp.com/DD3NTchIGlF9Fg1tRMSpPs" target="_blank">WhatsApp Group</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h4>Platform</h4>
+                <h4>Navigate</h4>
                 <ul>
                     <li><a href="#" onclick="goHome(); return false;">Home</a></li>
                     <li><a href="#" onclick="showAbout(event); return false;">About Us</a></li>
-                    <li><a href="#" onclick="goToTab('sub-articles'); return false;">Explore Articles</a></li>
+                    <li><a href="#" onclick="showSession(event); return false;">Book Session</a></li>
+                    <li><a href="#" onclick="showTools(event); return false;">Tools</a></li>
+                    <li><a href="#" onclick="showContact(event); return false;">Contact Us</a></li>
+                    <li><a href="#" onclick="goToTab('sub-articles'); return false;">Articles</a></li>
                     <li><a href="#" onclick="goToTab('sub-youtube'); return false;">Videos</a></li>
-                </ul>
-            </div>
-
-
-            <div class="footer-col">
-                <h4>Tools</h4>
-                <ul>
-                    <li><a href="https://rivek619.github.io/r-dorker/" target="_blank">R-Dorker</a></li>
-                    <li><a href="https://rivek619.github.io/r-threatrecon/" target="_blank">R-ThreatRecon</a></li>
-                    <li><a href="https://rivek619.github.io/r-disclosure/" target="_blank">R-Disclosure</a></li>
-                    <li><a href="https://rivek619.github.io/r-exif/" target="_blank">R-Exif</a></li>
                 </ul>
             </div>
 
@@ -698,6 +741,7 @@
 
         <div class="footer-bottom">
             <p>© 2026 Hack-R Academy · Founded by Rivek Raj Tamang</p>
+            <p>Made with <3 by Arshu</p>
             <span class="footer-tag">// LEARN. HACK. REPEAT.</span>
         </div>
     </footer>
