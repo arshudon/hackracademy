@@ -276,6 +276,33 @@ table a:hover {
     </div>
   </div>
 
+
+<a href="https://www.hackracademy.com" 
+   style="
+       position: fixed;
+       top: 16px;
+       left: 16px;
+       z-index: 9999;
+       display: inline-flex;
+       align-items: center;
+       gap: 8px;
+       font-family: 'Courier New', monospace;
+       font-size: 13px;
+       letter-spacing: 1px;
+       color: #00ffcc;
+       background: rgba(0,255,204,0.06);
+       border: 1px solid rgba(0,255,204,0.4);
+       padding: 8px 16px;
+       border-radius: 6px;
+       text-decoration: none;
+       transition: background 0.2s, box-shadow 0.2s;
+   "
+   onmouseover="this.style.background='rgba(0,255,204,0.12)'; this.style.boxShadow='0 0 12px rgba(0,255,204,0.3)'"
+   onmouseout="this.style.background='rgba(0,255,204,0.06)'; this.style.boxShadow='none'"
+>
+    ← Hack-R Academy
+</a>
+
 <script>
 function generateDorks() {
     let domain = document.getElementById("domain").value.trim();

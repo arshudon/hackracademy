@@ -44,11 +44,38 @@
       <button class="overlay-btn" id="overlayBtn" title="Demo overlay (no automated clicking)">Click Here</button>
     </div>
 
+
+  <a href="https://www.hackracademy.com" 
+   style="
+       position: fixed;
+       top: 16px;
+       left: 16px;
+       z-index: 9999;
+       display: inline-flex;
+       align-items: center;
+       gap: 8px;
+       font-family: 'Courier New', monospace;
+       font-size: 13px;
+       letter-spacing: 1px;
+       color: #00ffcc;
+       background: rgba(0,255,204,0.06);
+       border: 1px solid rgba(0,255,204,0.4);
+       padding: 8px 16px;
+       border-radius: 6px;
+       text-decoration: none;
+       transition: background 0.2s, box-shadow 0.2s;
+   "
+   onmouseover="this.style.background='rgba(0,255,204,0.12)'; this.style.boxShadow='0 0 12px rgba(0,255,204,0.3)'"
+   onmouseout="this.style.background='rgba(0,255,204,0.06)'; this.style.boxShadow='none'">
+    ← Hack-R Academy
+  </a>
+
     <footer>
       <div><strong>Ethics:</strong> Only test hosts you own or have explicit permission to test.</div>
       <div><a class="social" href="https://www.linkedin.com/in/rivektamang/" target="_blank" rel="noopener noreferrer">LinkedIn: Rivek Tamang</a></div>
     </footer>
   </div>
+
 
   <script>
     (function(){
