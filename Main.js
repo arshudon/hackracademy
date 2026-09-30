@@ -484,3 +484,11 @@ if (contactForm) {
         window.location.href = `mailto:contact.hackracademy@gmail.com?subject=${subject}&body=${body}`;
     });
 }
+// ── HASH-BASED DEEP LINKING ────────────────────────────
+document.addEventListener("DOMContentLoaded", function() {
+    const hash = window.location.hash;
+    if      (hash === "#book-session") showSession();
+    else if (hash === "#tools")        showTools();
+    else if (hash === "#about")        showAbout();
+    else if (hash === "#contact")      showContact();
+});

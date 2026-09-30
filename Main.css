@@ -803,64 +803,7 @@ header {
     border: none;
 }
 
-/* ─── LINKEDIN TAB ────────────────────────────────────────── */
-.linkedin-block {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background: var(--card-bg);
-    border: 1px solid rgba(0,255,204,0.12);
-    border-radius: 12px;
-    padding: 28px 32px;
-    max-width: 480px;
-    text-decoration: none;
-    transition: .25s;
-}
 
-.linkedin-block:hover {
-    border-color: rgba(0,255,204,0.35);
-    box-shadow: 0 8px 28px rgba(0,255,204,0.1);
-}
-
-.linkedin-block img { width: 48px; height: 48px; border-radius: 8px; }
-
-.linkedin-block .li-text h3 {
-    font-family: var(--font-head);
-    font-size: 16px;
-    color: var(--white);
-    margin-bottom: 4px;
-}
-
-.linkedin-block .li-text p {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--teal);
-}
-
-/* ─── JOIN US TAB ─────────────────────────────────────────── */
-.join-block {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
-    flex-wrap: wrap;
-}
-
-.join-block p {
-    font-size: 17px;
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 360px;
-    margin-top: 0;
-}
-
-.qr-wrap {
-    background: white;
-    border-radius: 12px;
-    padding: 12px;
-    display: inline-block;
-}
-
-.qr-wrap img { width: 200px; display: block; border-radius: 6px; }
 
 /* ─── FOOTER ─────────────────────────────────────────────── */
 footer {
@@ -1440,6 +1383,12 @@ footer {
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     width: 100%;
+    align-items: stretch;
+}
+.session-card,
+.bonus-card-wrapper {
+    min-height: 400px;
+    box-sizing: border-box;
 }
 
 .session-card {
@@ -1467,11 +1416,12 @@ footer {
     animation: shimmer 3s linear infinite;
 }
 
-.session-card:hover {
+.session-card:not(.session-card--bonus):hover {
     transform: translateY(-6px);
     box-shadow: 0 16px 40px rgba(0,255,204,0.12);
     border-color: rgba(0,255,204,0.25);
 }
+
 
 .session-card:hover::before { opacity: 1; }
 
@@ -1497,6 +1447,12 @@ footer {
     flex: 1;
 }
 
+.session-card--bonus:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: transparent;
+}
+
 /* ── BONUS card wrapper ─────────────────────────────────── */
 .bonus-card-wrapper {
     position: relative;
@@ -1507,6 +1463,7 @@ footer {
         0 0 20px rgba(0,255,204,0.3),
         0 0 40px rgba(0,255,204,0.12);
     animation: bonusNeonPulse 2.5s ease-in-out infinite;
+    transition: transform .25s, box-shadow .25s;
 }
 
 @keyframes bonusNeonPulse {
@@ -1534,8 +1491,18 @@ footer {
         0 0 80px rgba(0,255,204,0.25);
 }
 
+.session-cards-grid{
+    padding: 30px;
+}
+
 /* ── Mobile ────────────────────────────────────────────── */
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+    .session-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
     .session-cards-grid {
         grid-template-columns: 1fr;
         max-width: 440px;
