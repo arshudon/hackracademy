@@ -18,8 +18,8 @@ function switchTab(id) {
     if (target) {
         target.classList.add("active");
 
-        // Update URL bookmark
-        history.replaceState({}, "", window.location.pathname);
+         // Update URL bookmark
+        // history.replaceState({}, "", window.location.pathname);
 
         // Scroll to the tab content
         target.scrollIntoView({
@@ -485,7 +485,7 @@ if (contactForm) {
     });
 }
 // ── HASH-BASED DEEP LINKING ────────────────────────────
-document.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("load", function() {
     const hash = window.location.hash;
     if      (hash === "#book-session") showSession();
     else if (hash === "#tools")        showTools();
