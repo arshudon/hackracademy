@@ -1,0 +1,233 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>R-MagicByte</title>
+<style>
+:root{--accent:#ffd400;--accent-hover:#ffea70;--accent-glow:rgba(255,212,0,.35);--blue-soft:rgba(255,212,0,.25);--black:#0a0a0a;--panel:#111;--panel2:#0f0f0f;--line:rgba(255,212,0,.25);--text:#f5f5f5;--muted:#9a9a9a;--dim:#777777;--danger:#ff5252}
+*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:var(--black);color:var(--text);font-family:Consolas,monospace;min-height:100vh}.page{width:min(900px,calc(100% - 32px));margin:0 auto;padding:58px 0 70px}.hero{text-align:center;margin-bottom:34px}.hero h1{margin:0;font-size:clamp(34px,6vw,54px);line-height:1;font-weight:bold;letter-spacing:.04em;color:var(--accent);text-shadow:0 0 14px rgba(255,212,0,.7)}.hero p{margin:12px auto 0;color:#d6d6d6;font-size:13px;line-height:1.7;max-width:750px}.hero-links{display:flex;gap:10px;justify-content:center;margin-top:10px}.hero-links a{font-size:12px;color:var(--accent);text-decoration:none;border:1px solid var(--blue-soft);padding:6px 12px;border-radius:4px;background:#111;transition:.25s}.hero-links a:hover{background:var(--accent);color:#000;box-shadow:0 0 10px var(--accent-glow)}.rule{width:54px;height:3px;background:var(--accent);border-radius:99px;margin:18px auto 0;box-shadow:0 0 8px var(--accent-glow)}.upload-card{border:1px solid var(--line);border-radius:5px;background:var(--panel);padding:18px}.drop{display:flex;min-height:220px;border:2px dashed var(--blue-soft);border-radius:5px;align-items:center;justify-content:center;text-align:center;padding:30px;cursor:pointer;transition:.25s;background:#0f0f0f}.drop:hover,.drop.drag{border-color:var(--accent);background:#111;box-shadow:0 0 14px var(--accent-glow)}.icon{width:56px;height:56px;border:1px solid var(--blue-soft);border-radius:6px;display:grid;place-items:center;margin:0 auto 14px;color:var(--accent);font-size:27px;background:rgba(255,212,0,.12)}.drop h2{font-size:18px;margin:0 0 7px;color:var(--text)}.drop p{margin:0 0 18px;color:var(--muted);font-size:13px}.btn{font-family:inherit;border:1px solid var(--blue-soft);background:#111;color:var(--accent);font-weight:bold;border-radius:5px;padding:10px 18px;cursor:pointer;font-size:13px;transition:.25s}.btn:hover{background:var(--accent);color:#000;box-shadow:0 0 10px var(--accent-glow);border-color:var(--accent)}input{display:none}.privacy{text-align:center;color:var(--dim);font-size:11px;margin:13px 0 0}.privacy b{color:var(--accent);font-weight:bold}.section{margin-top:34px}.section-title{display:flex;align-items:center;gap:11px;font-size:13px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;margin:0 0 14px;color:var(--accent);text-shadow:0 0 8px rgba(255,212,0,.45)}.section-title:before{content:"";width:4px;height:23px;border-radius:2px;background:var(--accent);box-shadow:0 0 8px var(--accent-glow)}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{border:1px solid var(--line);border-radius:5px;background:var(--panel);padding:15px}.stat strong{display:block;color:var(--accent);font-size:25px;line-height:1.1}.stat span{color:var(--dim);font-size:10px;text-transform:uppercase;letter-spacing:.08em}.results{border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--panel)}.result{padding:17px 18px;border-bottom:1px solid rgba(255,212,0,.12)}.result:last-child{border-bottom:0}.result-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.filename{font-size:14px;font-weight:bold;overflow-wrap:anywhere}.filesize{font-size:11px;color:var(--dim);margin-top:2px}.badge{font-size:10px;font-weight:bold;border-radius:4px;padding:5px 9px;white-space:nowrap;letter-spacing:.06em}.match{background:rgba(0,230,118,.08);color:#7affc6;border:1px solid rgba(0,230,118,.35)}.mismatch{background:rgba(255,77,109,.08);color:#ff8fa3;border:1px solid rgba(255,77,109,.35)}.unknown{background:#0f0f0f;color:var(--muted);border:1px solid var(--blue-soft)}.hidden{background:rgba(255,212,0,.12);color:var(--accent);border:1px solid var(--blue-soft)}.details{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.detail{background:#0a0a0a;border:1px solid var(--line);border-radius:5px;padding:10px}.detail label{display:block;color:var(--accent);text-transform:uppercase;font-size:9px;letter-spacing:.08em;margin-bottom:3px;font-weight:bold}.detail div{font-size:12px;color:#d6d6d6;overflow-wrap:anywhere}.detail.hex{grid-column:1/-1}.detail.hex div{font-family:Consolas,'Courier New',monospace;color:#ffea70}.empty{text-align:center;padding:34px;color:var(--dim);font-size:13px}.toolbar{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}.filecount{font-size:12px;color:var(--accent);font-weight:bold;margin-right:auto}#filter{background:#0a0a0a;border:1px solid var(--blue-soft);border-radius:4px;color:#fff;font-family:Consolas,monospace;font-size:12px;padding:9px 10px;outline:none;min-width:160px}#filter:focus{border-color:var(--accent)}.warnline{background:rgba(255,77,109,.08);border:1px solid rgba(255,77,109,.35);border-radius:5px;padding:10px;font-size:12px;color:#ff8fa3;margin-top:12px}.hextable{width:100%;border-collapse:collapse;font-family:Consolas,monospace;font-size:11px;margin-top:6px}.hextable th{color:var(--accent);text-align:left;padding:5px 8px;border-bottom:1px solid var(--blue-soft);font-size:10px;letter-spacing:.08em}.hextable td{padding:3px 8px;border-bottom:1px solid rgba(255,212,0,.06);color:#d6d6d6;vertical-align:top}.hextable td.h{color:#ffea70;white-space:nowrap}.hextable td.a{color:var(--muted);white-space:nowrap}.magicline{font-family:Consolas,monospace;color:#ffea70;font-size:12px}.catbadge{font-size:10px;font-weight:bold;border-radius:4px;padding:5px 9px;background:#0f0f0f;color:var(--muted);border:1px solid var(--blue-soft);white-space:nowrap;letter-spacing:.06em;margin-right:6px}.foot{text-align:center;margin-top:30px;color:#aaa;font-size:13px}.foot a{color:var(--accent);text-decoration:none;margin:0 6px}.foot a:hover{text-decoration:underline}.foot .heart{color:var(--accent);text-shadow:0 0 8px var(--accent-glow)}.warning{font-size:11px;color:var(--dim);text-align:center;margin-top:12px}@media(max-width:650px){.page{padding-top:38px}.summary{grid-template-columns:repeat(2,1fr)}.details{grid-template-columns:1fr}.detail.hex{grid-column:auto}.result-top{flex-direction:column}.drop{min-height:190px}}
+</style></head><body><main class="page"><header class="hero"><h1>R-MAGICBYTE</h1><p>Forensic File Signature &amp; Extension Verification</p><div class="hero-links"><a href="https://www.linkedin.com/in/rivektamang/" target="_blank" rel="noopener">LinkedIn</a><a href="https://rivudon.medium.com/" target="_blank" rel="noopener">Medium</a></div><div class="rule"></div></header>
+<section class="upload-card"><label class="drop" id="drop"><div><div class="icon">⬢</div><h2>Select Files</h2><p>Drag &amp; Drop any file or multiple files</p><button class="btn" id="choose" type="button">Browse Files</button><input id="picker" type="file" multiple></div></label><div class="privacy"><b>LOCAL ANALYSIS</b> — files never leave your browser</div></section>
+<section class="section"><h2 class="section-title">Scan Summary</h2><div class="summary"><div class="stat"><strong id="total">0</strong><span>Files Scanned</span></div><div class="stat"><strong id="matches">0</strong><span>Matches</span></div><div class="stat"><strong id="mismatches">0</strong><span>Mismatches</span></div><div class="stat"><strong id="unknown">0</strong><span>Unknown / Hidden</span></div></div></section>
+<section class="section"><h2 class="section-title">File Analysis</h2><div class="toolbar"><span id="fileCount" class="filecount">Files (0)</span><input id="filter" type="text" placeholder="Filter files..."><button class="btn ghost" id="json">Export JSON</button><button class="btn ghost" id="csv">Export CSV</button><button class="btn ghost" id="clear">Clear</button></div><div class="results" id="results"><div class="empty">Upload evidence files to begin signature analysis.</div></div><div class="warning">A signature mismatch is an investigative indicator, not proof that a file is malicious.</div></section>
+<footer class="foot">Made with <span class="heart">♥</span> by <strong style="color:#fff">Rivek Raj Tamang (RivuDon)</strong><br><br><a href="https://www.linkedin.com/in/rivektamang/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | <a href="https://rivudon.medium.com/" target="_blank" rel="noopener noreferrer">Medium</a><br><br><span style="color:#aaa">Powered by </span><a href="https://www.hackracademy.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:bold">Hack-R Academy</a></footer></main>
+<script>
+// R-MagicByte signature database. Offsets are BYTE offsets.
+const signatures=[
+ {type:'Windows PE Executable',ext:['exe','dll','sys','scr','com'],tests:[{o:0,b:'4D5A'}],magic:'4D 5A',ascii:'MZ',offset:'0'},
+ {type:'Linux Executable & Linkable Format',ext:['elf'],tests:[{o:0,b:'7F454C46'}],magic:'7F 45 4C 46',ascii:'.ELF',offset:'0'},
+ {type:'Portable Document Format',ext:['pdf'],tests:[{o:0,b:'25504446'}],magic:'25 50 44 46',ascii:'%PDF',offset:'0'},
+ {type:'ZIP Archive / Office Open XML / Android Package',ext:['zip','jar','apk','docx','xlsx','dotx','odt','ott','epub'],tests:[{o:0,b:'504B0304'},{o:0,b:'504B0506'},{o:0,b:'504B0708'}],magic:'50 4B 03 04',ascii:'PK..',offset:'0'},
+ {type:'RAR Archive',ext:['rar'],tests:[{o:0,b:'526172211A070100'},{o:0,b:'526172211A0700'}],magic:'52 61 72 21 1A 07 ..',ascii:'Rar!... (v4/v5)',offset:'0'},
+ {type:'TIFF Image',ext:['tiff','tif'],tests:[{o:0,b:'49492A00'},{o:0,b:'4D4D002A'}],magic:'49 49 2A 00 / 4D 4D 00 2A',ascii:'II*. / MM.*',offset:'0'},
+ {type:'Windows Icon',ext:['ico'],tests:[{o:0,b:'00000100'}],magic:'00 00 01 00',ascii:'....',offset:'0'},
+ {type:'Adobe Photoshop Document',ext:['psd'],tests:[{o:0,b:'38425053'}],magic:'38 42 50 53',ascii:'8BPS',offset:'0'},
+ {type:'TAR Archive',ext:['tar'],tests:[{o:257,b:'7573746172'}],magic:'75 73 74 61 72',ascii:'ustar',offset:'257'},
+ {type:'TrueType Font',ext:['ttf'],tests:[{o:0,b:'00010000'}],magic:'00 01 00 00',ascii:'....',offset:'0'},
+ {type:'OpenType Font',ext:['otf'],tests:[{o:0,b:'4F54544F'}],magic:'4F 54 54 4F',ascii:'OTTO',offset:'0'},
+ {type:'WOFF Font',ext:['woff'],tests:[{o:0,b:'774F4646'}],magic:'77 4F 46 46',ascii:'wOFF',offset:'0'},
+ {type:'WOFF2 Font',ext:['woff2'],tests:[{o:0,b:'774F4632'}],magic:'77 4F 46 32',ascii:'wOF2',offset:'0'},
+ {type:'7-Zip Archive',ext:['7z'],tests:[{o:0,b:'377ABCAF271C'}],magic:'37 7A BC AF 27 1C',ascii:'7z...',offset:'0'},
+ {type:'Gzip Compressed Archive',ext:['tar.gz','tgz'],tests:[{o:0,b:'1F8B08'}],magic:'1F 8B 08',ascii:'...',offset:'0'},
+ {type:'PNG Image',ext:['png'],tests:[{o:0,b:'89504E470D0A1A0A'}],magic:'89 50 4E 47 0D 0A 1A 0A',ascii:'.PNG....',offset:'0'},
+ {type:'JPEG / JFIF Image',ext:['jpg','jpeg'],tests:[{o:0,b:'FFD8FF'}],magic:'FF D8 FF',ascii:'....',offset:'0'},
+ {type:'GIF Image',ext:['gif'],tests:[{o:0,b:'474946383761'},{o:0,b:'474946383961'}],magic:'47 49 46 38 37 61 / 47 49 46 38 39 61',ascii:'GIF87a / GIF89a',offset:'0'},
+ {type:'Windows Bitmap',ext:['bmp'],tests:[{o:0,b:'424D'}],magic:'42 4D',ascii:'BM',offset:'0'},
+ {type:'Libpcap Packet Capture (Standard)',ext:['pcap'],tests:[{o:0,b:'D4C3B2A1'},{o:0,b:'A1B2C3D4'}],magic:'D4 C3 B2 A1 / A1 B2 C3 D4',ascii:'.... (Endian dependent)',offset:'0'},
+ {type:'PCAP Next Generation Capture',ext:['pcapng'],tests:[{o:0,b:'0A0D0D0A'}],magic:'0A 0D 0D 0A',ascii:'\\n\\r\\r\\n',offset:'0'},
+ {type:'MP3 Audio',ext:['mp3'],tests:[{o:0,b:'494433'},{o:0,b:'FFFB'},{o:0,b:'FFF3'},{o:0,b:'FFF2'}],magic:'49 44 33 (ID3) / FF FB|F3|F2 frame sync',ascii:'ID3 / ...',offset:'0'},
+ {type:'Waveform Audio File Format',ext:['wav'],tests:[{o:0,b:'52494646'},{o:8,b:'57415645'}],all:true,magic:'52 49 46 46 ... 57 41 56 45',ascii:'RIFF ... WAVE',offset:'0 (RIFF), 8 (WAVE)'},
+ {type:'MP4 Video (ISO Base Media)',ext:['mp4','m4v','mov','m4a','3gp'],tests:[{o:4,b:'66747970'}],magic:'66 74 79 70',ascii:'ftyp',offset:'4'},
+ {type:'SQLite 3 Database',ext:['sqlite','db'],tests:[{o:0,b:'53514C69746520666F726D6174203300'}],magic:'53 51 4C 69 74 65 20 66 6F 72 6D 61 74 20 33 00',ascii:'SQLite format 3\\0',offset:'0'},
+ {type:'Windows Event Log',ext:['evtx'],tests:[{o:0,b:'456C6646696C6500'}],magic:'45 6C 66 46 69 6C 65 00',ascii:'ElfFile\\0',offset:'0'},
+ {type:'Compiled Java Bytecode',ext:['class'],tests:[{o:0,b:'CAFEBABE'}],magic:'CA FE BA BE',ascii:'.... (cafebabe)',offset:'0'},
+ {type:'Android Dalvik Executable',ext:['dex'],tests:[{o:0,b:'6465780A30333500'}],magic:'64 65 78 0A 30 33 35 00',ascii:'dex\\n035\\0',offset:'0'},
+
+ // 21–40
+ {type:'Legacy Microsoft Office (OLE2 / Compound File)',ext:['doc','dot','xls','ppt','msg','msi'],tests:[{o:0,b:'D0CF11E0A1B11AE1'}],magic:'D0 CF 11 E0 A1 B1 1A E1',ascii:'OLE2 Compound Container',offset:'0'},
+ {type:'macOS Mach-O Executable (64-bit)',ext:['macho','dylib'],tests:[{o:0,b:'CFFAEDFE'},{o:0,b:'FEEDFACF'}],magic:'CF FA ED FE / FE ED FA CF',ascii:'....',offset:'0'},
+ {type:'Windows Shell Shortcut File',ext:['lnk'],tests:[{o:0,b:'4C00000001140200'}],magic:'4C 00 00 00 01 14 02 00',ascii:'L.......',offset:'0'},
+ {type:'Windows Prefetch File (MAM compressed)',ext:['pf'],tests:[{o:0,b:'4D414D04'}],magic:'4D 41 4D 04',ascii:'MAM.',offset:'0'},
+ {type:'Windows Registry Hive',ext:[],tests:[{o:0,b:'72656766'}],magic:'72 65 67 66',ascii:'regf',offset:'0'},
+ {type:'Windows Crash Dump File',ext:['raw','dmp'],tests:[{o:0,b:'5041474544554D50'}],magic:'50 41 47 45 44 55 4D 50',ascii:'PAGEDUMP',offset:'0'},
+ {type:'ASN.1 DER Container / PKCS #12 Candidate',ext:['pfx','p12','der','cer'],tests:[{o:0,b:'3082'}],magic:'30 82',ascii:'0.',offset:'0'},
+ {type:'Bzip2 Compressed Archive',ext:['bz2'],tests:[{o:0,b:'425A68'}],magic:'42 5A 68',ascii:'BZh',offset:'0'},
+ {type:'XZ Compression Container',ext:['xz'],tests:[{o:0,b:'FD377A585A00'}],magic:'FD 37 7A 58 5A 00',ascii:'.7zXZ\\0',offset:'0'},
+ {type:'Zstandard Compressed File',ext:['zst'],tests:[{o:0,b:'28B52FFD'}],magic:'28 B5 2F FD',ascii:'.(/.',offset:'0'},
+ {type:'WebP Image',ext:['webp'],tests:[{o:0,b:'52494646'},{o:8,b:'57454250'}],all:true,magic:'52 49 46 46 ... 57 45 42 50',ascii:'RIFF ... WEBP',offset:'0 (RIFF), 8 (WEBP)'},
+ {type:'Audio Video Interleave',ext:['avi'],tests:[{o:0,b:'52494646'},{o:8,b:'41564920'}],all:true,magic:'52 49 46 46 ... 41 56 49 20',ascii:'RIFF ... AVI ',offset:'0 (RIFF), 8 (AVI )'},
+ {type:'Matroska / WebM Multimedia Container',ext:['mkv','webm'],tests:[{o:0,b:'1A45DFA3'}],magic:'1A 45 DF A3',ascii:'EBML header',offset:'0'},
+ {type:'Free Lossless Audio Codec',ext:['flac'],tests:[{o:0,b:'664C6143'}],magic:'66 4C 61 43',ascii:'fLaC',offset:'0'},
+ {type:'Ogg Multimedia Container',ext:['ogg','oga'],tests:[{o:0,b:'4F676753'}],magic:'4F 67 67 53',ascii:'OggS',offset:'0'},
+ {type:'Rich Text Format',ext:['rtf'],tests:[{o:0,b:'7B5C727466'}],magic:'7B 5C 72 74 66',ascii:'{\\rtf',offset:'0'},
+ {type:'ISO 9660 CD/DVD Disk Image',ext:['iso'],tests:[{o:32769,b:'4344303031'}],magic:'43 44 30 30 31',ascii:'CD001',offset:'32769 (0x8001)'},
+ {type:'Microsoft Virtual Hard Disk',ext:['vhd'],tests:[],magic:'63 6F 6E 65 63 74 69 78',ascii:'conectix',offset:'VHD footer'},
+ {type:'Microsoft Virtual Hard Disk v2',ext:['vhdx'],tests:[{o:0,b:'7668647866696C65'}],magic:'76 68 64 78 66 69 6C 65',ascii:'vhdxfile',offset:'0'},
+
+ // Additional document / text / script signatures supplied
+ {type:'OpenDocument Text',ext:['odt','ott'],tests:[{o:0,b:'504B0304'}],magic:'50 4B 03 04',ascii:'PK.. (ZIP/OpenDocument container)',offset:'0'},
+ {type:'PostScript / Encapsulated PostScript',ext:['ps','eps'],tests:[{o:0,b:'25215053'}],magic:'25 21 50 53',ascii:'%!PS',offset:'0'},
+ {type:'Microsoft Compiled HTML Help File',ext:['chm'],tests:[{o:0,b:'49545346'}],magic:'49 54 53 46',ascii:'ITSF',offset:'0'},
+ {type:'Microsoft OneNote Notebook',ext:['one'],tests:[{o:0,b:'E4525C7B8CD8A74D'}],magic:'E4 52 5C 7B 8C D8 A7 4D',ascii:'...{...M',offset:'0'},
+ {type:'Corel WordPerfect Document',ext:['wpd'],tests:[{o:0,b:'FF575043'}],magic:'FF 57 50 43',ascii:'.WPC',offset:'0'},
+ {type:'Electronic Publication (eBook)',ext:['epub'],tests:[{o:0,b:'504B0304'}],magic:'50 4B 03 04',ascii:'PK.. (EPUB ZIP container)',offset:'0'},
+ {type:'XML Document',ext:['xml'],tests:[{o:0,b:'3C3F786D6C'}],magic:'3C 3F 78 6D 6C',ascii:'<?xml',offset:'0'},
+ {type:'HTML Document',ext:['html','htm'],tests:[{o:0,b:'3C21444F4354'},{o:0,b:'3C68746D6C'},{o:0,b:'3C48544D4C'}],magic:'3C 21 44 4F 43 54 / 3C 68 74 6D 6C',ascii:'<!DOCT / <html',offset:'0'},
+ {type:'Unix Executable Script (Shebang)',ext:['sh','py','pl'],tests:[{o:0,b:'2321'}],magic:'23 21',ascii:'#!',offset:'0'},
+ {type:'PowerShell Script (comment/shebang)',ext:['ps1'],tests:[{o:0,b:'2321'},{o:0,b:'2320'}],magic:'23 21 / 23 20',ascii:'#! / # ',offset:'0'},
+ {type:'Windows Registry Text Export',ext:['reg'],tests:[{o:0,b:'57696E646F7773205265676973747279'}],magic:'57 69 6E 64 6F 77 73 20 52 65 67 69 73 74 72 79',ascii:'Windows Registry',offset:'0'}
+];
+const expected={};
+signatures.forEach(s=>s.ext.forEach(e=>expected[e]=s));
+let data=[];
+const $=x=>document.getElementById(x),drop=$('drop'),picker=$('picker');
+$('choose').onclick=e=>{e.preventDefault();picker.click()};
+picker.onchange=()=>scan([...picker.files]);
+['dragenter','dragover'].forEach(n=>drop.addEventListener(n,e=>{e.preventDefault();drop.classList.add('drag')}));
+['dragleave','drop'].forEach(n=>drop.addEventListener(n,e=>{e.preventDefault();drop.classList.remove('drag')}));
+drop.addEventListener('drop',e=>scan([...e.dataTransfer.files]));
+
+function hex(a){return[...a].map(b=>b.toString(16).padStart(2,'0')).join('').toUpperCase()}
+// IMPORTANT: signature offsets are bytes; hex strings use two characters per byte.
+function test(h,s){const checks=s.tests.map(t=>h.slice(t.o*2,t.o*2+t.b.length)===t.b);return s.all?checks.every(Boolean):checks.some(Boolean)}
+function detect(h){return signatures.find(s=>s.tests.length&&test(h,s))||null}
+function extensionOf(name){const n=name.toLowerCase();if(n.endsWith('.tar.gz'))return 'tar.gz';const i=n.lastIndexOf('.');return i>=0?n.slice(i+1):''}
+function bytesAt(h,t){return h.slice(t.o*2,t.o*2+t.b.length).match(/../g)?.join(' ')||'—'}
+function observedSignature(h,s){if(!s)return 'Unknown';const hits=s.tests.filter(t=>h.slice(t.o*2,t.o*2+t.b.length)===t.b);return hits.map(t=>`${bytesAt(h,t)} @ ${t.o}`).join(' + ')||'Unknown'}
+// Extensions with no binary magic — verified by content heuristics instead.
+const TEXT_EXTS=['txt','csv','log','md','markdown','json','yaml','yml','ini','cfg','conf','css','js','ts','py','sh','bash','c','h','cpp','hpp','java','rb','go','rs','php','pl','r','sql','tex','eml','mbox','srt','vtt','toml'];
+function isTextBytes(u8){
+  const n=Math.min(u8.length,2048);
+  if(n===0) return false;
+  let printable=0;
+  for(let i=0;i<n;i++){ const b=u8[i];
+    if(b===0) return false;
+    if((b>=32&&b<=126)||b===9||b===10||b===13) printable++;
+  }
+  return (printable/n)>0.85;
+}
+function isUTF16Bytes(u8){
+  if(u8.length<2) return false;
+  if(!((u8[0]===0xFF&&u8[1]===0xFE)||(u8[0]===0xFE&&u8[1]===0xFF))) return false;
+  let printable=0, pairs=0;
+  for(let i=2;i+1<Math.min(u8.length,2048);i+=2){ pairs++;
+    const c=u8[i]|(u8[i+1]<<8);
+    if((c>=32&&c<=126)||c===9||c===10||c===13) printable++;
+  }
+  return pairs>0 && (printable/pairs)>0.7;
+}
+
+async function scan(files){
+ for(const f of files){
+  // Read enough of the beginning for high-offset signatures such as ISO 9660.
+  const headBytes=new Uint8Array(await f.slice(0,65536).arrayBuffer()),h=hex(headBytes),ext=extensionOf(f.name),exp=expected[ext]||null;
+  let det=detect(h), expMatches=exp && exp.tests.length ? test(h,exp) : false;
+
+  // Classic VHD stores the 'conectix' cookie in its 512-byte footer.
+  let vhdFooterMatch=false;
+  if(ext==='vhd' && f.size>=512){
+   const footer=new Uint8Array(await f.slice(Math.max(0,f.size-512),f.size).arrayBuffer());
+   vhdFooterMatch=hex(footer).startsWith('636F6E6563746978');
+   if(vhdFooterMatch){ expMatches=true; det=exp; }
+  }
+
+  // If the expected signature matches, prefer its more extension-specific label
+  // (e.g. ODT/EPUB vs generic ZIP, REG text export vs other content).
+  if(expMatches) det=exp;
+
+  // Plain-text content: no binary signature matched and bytes look like text.
+  // Identified as Plain text whatever the claimed extension is.
+  const textLike=isTextBytes(headBytes)||isUTF16Bytes(headBytes);
+  const contentIsText=!det && textLike;
+
+  // Empty files: no content to contradict a text extension (MATCH);
+  // an empty binary (e.g. .pdf) is missing its magic (MISMATCH).
+  const isEmpty=f.size===0;
+  const emptyText=isEmpty && TEXT_EXTS.includes(ext);
+  let status='UNKNOWN';
+  if(emptyText)status='MATCH';
+  else if(isEmpty && exp)status='MISMATCH';
+  else if(isEmpty)status='EMPTY';
+  else if(exp && expMatches)status='MATCH';
+  else if(TEXT_EXTS.includes(ext) && contentIsText)status='MATCH';
+  else if(!ext&&det)status='NO EXTENSION';
+  else if(exp)status='MISMATCH';
+  else if(TEXT_EXTS.includes(ext)&&det)status='MISMATCH';
+  else if(det)status='UNKNOWN';
+  else if(TEXT_EXTS.includes(ext)&&!contentIsText)status='MISMATCH';
+
+  const detectedMagic=contentIsText?'printable text content (no binary magic defined)':vhdFooterMatch?'63 6F 6E 65 63 74 69 78 @ VHD footer':observedSignature(h,det);
+  // Detected identity prefers the extension-specific entry on match (e.g. ODT over generic ZIP).
+  const detEntry=contentIsText?null:(det||null);
+  const detExt=(contentIsText||emptyText)?'txt':detEntry?primaryExt(detEntry):'';
+  const detLabel=contentIsText?'Plain text':emptyText?'Plain text (empty file)':detEntry?detEntry.type:'Unknown';
+  const detCat=(contentIsText||emptyText)?'document':detEntry?(CATEGORY[detEntry.cat]||detEntry.cat):'unknown';
+  const detMime=(contentIsText||emptyText)?'text/plain':(MIME[detExt]||'application/octet-stream');
+  const conf=contentIsText?60:emptyText?50:(f.size===0?0:confidence(detEntry,false));
+  const magic16=isEmpty?'—':hexSpaced(headBytes.slice(0,16));
+  const hex512=headBytes.slice(0,512);
+  const hex512str=Array.from(hex512).map(b=>b.toString(16).padStart(2,'0')).join('');
+  const expIsText=contentIsText&&TEXT_EXTS.includes(ext);
+  data.push({name:f.name,size:f.size,ext:ext?('.'+ext):'(none)',
+    expected:emptyText?'Plain text (empty file, consistent)':expIsText?'Plain text (content heuristic)':exp?.type||'Unknown / unsupported extension',
+    expectedMagic:emptyText?'n/a (0 bytes)':expIsText?'printable ASCII/UTF-8/UTF-16':exp?.magic||'—',
+    expectedOffset:emptyText?'n/a':expIsText?'n/a':exp?.offset||'—',
+    detected:detLabel,detectedExt:detExt?('.'+detExt):'—',mime:(detEntry||contentIsText||emptyText)?detMime:'—',
+    category:detCat,confidence:conf,detectedMagic,magic16,hex512:hex512str,
+    ascii:(contentIsText||emptyText)?'text':det?.ascii||'—',
+    header:h.slice(0,128).match(/../g)?.join(' ')||'—',status,
+    warn:status==='MISMATCH'?(isEmpty?`Empty file: 0 bytes, missing ${(exp&&exp.type)||'expected'} signature`:`Extension mismatch: File has extension ".${ext}" but appears to be a ${detLabel} (${detExt?'.'+detExt:'unknown type'})`):""});
+ }
+ render();
+}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function size(n){if(n<1024)return n+' B';if(n<1048576)return(n/1024).toFixed(1)+' KB';return(n/1048576).toFixed(1)+' MB'}
+/* MIME + category per primary extension (first in each signature's ext list). */
+const MIME={jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png',gif:'image/gif',bmp:'image/bmp',tiff:'image/tiff',tif:'image/tiff',ico:'image/vnd.microsoft.icon',psd:'image/vnd.adobe.photoshop',webp:'image/webp',heic:'image/heic',heif:'image/heif',cr2:'image/x-canon-cr2',zip:'application/zip',rar:'application/vnd.rar','7z':'application/x-7z-compressed',gz:'application/gzip',tgz:'application/gzip',bz2:'application/x-bzip2',xz:'application/x-xz',zst:'application/zstd',tar:'application/x-tar',cab:'application/vnd.ms-cab-compressed',arj:'application/x-arj',lzh:'application/x-lzh',cpio:'application/x-cpio',rpm:'application/x-rpm',deb:'application/vnd.debian.binary-package',lzma:'application/x-lzma',exe:'application/vnd.microsoft.portable-executable',dll:'application/vnd.microsoft.portable-executable',sys:'application/vnd.microsoft.portable-executable',scr:'application/vnd.microsoft.portable-executable',com:'application/vnd.microsoft.portable-executable',elf:'application/x-elf',macho:'application/x-mach-binary',class:'application/java-vm',dex:'application/vnd.android.dex',lnk:'application/x-ms-shortcut',chm:'application/vnd.ms-htmlhelp',pdf:'application/pdf',doc:'application/msword',dot:'application/msword',xls:'application/vnd.ms-excel',ppt:'application/vnd.ms-powerpoint',msg:'application/vnd.ms-outlook',msi:'application/x-msi',docx:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',pptx:'application/vnd.openxmlformats-officedocument.presentationml.presentation',rtf:'text/rtf',ps:'application/postscript',eps:'application/postscript',djvu:'image/vnd.djvu',mp3:'audio/mpeg',flac:'audio/flac',ogg:'audio/ogg',oga:'audio/ogg',wav:'audio/wav',avi:'video/x-msvideo',mkv:'video/x-matroska',webm:'video/webm',mp4:'video/mp4',m4v:'video/x-m4v',m4a:'audio/mp4','3gp':'video/3gpp',mov:'video/quicktime',flv:'video/x-flv',wma:'audio/x-ms-wma',wmv:'video/x-ms-wmv',asf:'video/x-ms-asf',rm:'application/vnd.rn-realmedia',mid:'audio/midi',midi:'audio/midi',aiff:'audio/aiff',au:'audio/basic',aac:'audio/aac',sqlite:'application/vnd.sqlite3',db:'application/vnd.sqlite3',pcap:'application/vnd.tcpdump.pcap',pcapng:'application/x-pcapng',parquet:'application/vnd.apache.parquet',pst:'application/vnd.ms-outlook',ost:'application/vnd.ms-outlook',dat:'application/octet-stream',evtx:'application/octet-stream',mdb:'application/x-msaccess',mbr:'application/octet-stream',img:'application/octet-stream',gpt:'application/octet-stream',ntfs:'application/octet-stream',fat32:'application/octet-stream',fat16:'application/octet-stream',exfat:'application/octet-stream','ext2/3/4':'application/octet-stream',apfs:'application/octet-stream',swap:'application/octet-stream',vmdk:'application/x-vmdk',qcow2:'application/x-qemu-disk',iso:'application/x-iso9660-image',e01:'application/x-ewf',ttf:'font/ttf',otf:'font/otf',woff:'font/woff',woff2:'font/woff2',swf:'application/x-shockwave-flash',pem:'application/x-pem-file',crt:'application/x-x509-ca-cert',key:'application/pkcs8',kdbx:'application/x-keepass',txt:'text/plain',csv:'text/csv',log:'text/plain',md:'text/markdown',json:'application/json',yaml:'text/yaml',yml:'text/yaml',ini:'text/plain',conf:'text/plain',xml:'application/xml',html:'text/html',htm:'text/html',js:'text/javascript',py:'text/x-python',sh:'application/x-sh',eml:'message/rfc822'};
+const CATEGORY={image:'image',archive:'archive',exec:'executable',doc:'document',media:'media',data:'forensic',disk:'disk image',font:'font',misc:'other'};
+/* Confidence: text heuristic 60%; weak/generic sigs 65-75%; solid matches 90-98%. */
+const WEAK_SOLO=['lzma','der'];
+function confidence(entry,textMatch){
+  if(textMatch) return 60;
+  if(!entry) return 0;
+  const primary=(entry.ext[0]||'').toLowerCase();
+  if(WEAK_SOLO.includes(primary)) return 65;
+  let bytes=0; for(const t of entry.tests) bytes=Math.max(bytes,t.b.length/2);
+  let c=bytes>=8?95:bytes>=4?90:bytes>=2?80:70;
+  if(entry.tests.length>1) c=Math.min(c+3,98);
+  return c;
+}
+function primaryExt(entry){ return (entry.ext[0]||'').toLowerCase(); }
+function hexSpaced(u8){ let s=""; for(let i=0;i<u8.length;i++) s+=u8[i].toString(16).padStart(2,"0").toUpperCase()+(i<u8.length-1?" ":""); return s; }
+function hexRows(hex512str){
+  const bytes=[]; for(let i=0;i<hex512str.length;i+=2) bytes.push(parseInt(hex512str.substr(i,2),16));
+  let rows="";
+  for(let r=0;r<bytes.length;r+=16){
+    const off=r.toString(16).padStart(8,"0").toUpperCase();
+    let hx="",asc="";
+    for(let i=0;i<16&&r+i<bytes.length;i++){ const b=bytes[r+i];
+      hx+=b.toString(16).padStart(2,"0").toUpperCase()+" ";
+      asc+=(b>=32&&b<=126)?String.fromCharCode(b):"."; }
+    rows+=`<tr><td class="off">${off}</td><td class="h">${esc(hx.trim())}</td><td class="a">${esc(asc)}</td></tr>`;
+  }
+  return rows;
+}
+function card(x){
+  const badge=x.status==='MATCH'?'match':x.status==='MISMATCH'?'mismatch':x.status==='NO EXTENSION'?'hidden':'unknown';
+  return `<article class="result"><div class="result-top"><div><div class="filename">📄 ${esc(x.name)}</div><div class="filesize">${size(x.size)}</div></div><div><span class="catbadge">${esc(x.category)}</span><span class="badge ${badge}">${x.status==='MATCH'?'Match':x.status==='MISMATCH'?'Mismatch':x.status}</span></div></div>`
+  +`<div style="margin-top:12px;font-weight:bold;font-size:12px;color:var(--accent)">File Details</div>`
+  +(x.warn?`<div class="warnline">⚠️ ${esc(x.warn)}</div>`:"")
+  +`<div class="details"><div class="detail"><label>Detected Type</label><div>${esc(x.detected)}</div></div><div class="detail"><label>MIME Type</label><div>${esc(x.mime)}</div></div><div class="detail"><label>Extension</label><div>${esc(x.detectedExt)}</div></div><div class="detail"><label>Category</label><div>${esc(x.category)}</div></div><div class="detail"><label>Confidence</label><div>${x.confidence}%</div></div><div class="detail"><label>Expected Type</label><div>${esc(x.expected)}</div></div><div class="detail hex"><label>Magic Bytes (First 16)</label><div class="magicline">${esc(x.magic16)}</div></div><div class="detail hex"><label>Hex Dump (First 512 bytes)</label><table class="hextable"><thead><tr><th>Offset</th><th>Hex</th><th>ASCII</th></tr></thead><tbody>${hexRows(x.hex512)}</tbody></table></div></div></article>`;
+}
+function render(){
+ const box=$('results');
+ const q=($('filter').value||'').trim().toLowerCase();
+ const shown=q?data.filter(x=>x.name.toLowerCase().includes(q)):data;
+ if(!data.length)box.innerHTML='<div class="empty">Upload evidence files to begin signature analysis.</div>';
+ else if(!shown.length)box.innerHTML='<div class="empty">No files match the filter.</div>';
+ else box.innerHTML=shown.map(card).join('');
+ $('fileCount').textContent=`Files (${shown.length})`;
+ $('total').textContent=data.length;$('matches').textContent=data.filter(x=>x.status==='MATCH').length;$('mismatches').textContent=data.filter(x=>x.status==='MISMATCH').length;$('unknown').textContent=data.filter(x=>['UNKNOWN','NO EXTENSION','EMPTY'].includes(x.status)).length;
+}
+$('filter').addEventListener('input',render);
+$('clear').onclick=()=>{data=[];picker.value='';$('filter').value='';render()};
+function download(name,content,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+$('csv').onclick=()=>{if(!data.length)return;const k=['name','size','claimed_ext','expected','expectedMagic','expectedOffset','detected','detected_ext','mime','category','confidence','detectedMagic','magic16','status','warning'],csv=[k.join(','),...data.map(x=>k.map(y=>'"'+String(x[y]).replaceAll('"','""')+'"').join(','))].join('\n');download('r-magicbyte-results.csv',csv,'text/csv')};
+$('json').onclick=()=>{if(!data.length)return;download('r-magicbyte-results.json',JSON.stringify(data.map(({hex512,...rest})=>rest),null,2),'application/json')};
+</script></body></html>
