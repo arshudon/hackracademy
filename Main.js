@@ -487,7 +487,7 @@ if (contactForm) {
 // ── HASH-BASED DEEP LINKING ────────────────────────────
 window.addEventListener("load", function() {
     const hash = window.location.hash;
-    if      (hash === "#book-session") showSession();
+    if      (hash === "#session") showSession();
     else if (hash === "#tools")        showTools();
     else if (hash === "#about")        showAbout();
     else if (hash === "#contact")      showContact();
