@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hack-R Academy</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon2.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon1.png">
+    <link rel="apple-touch-icon" href="images/favicon1.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="preset-2.css">
+</head>
+
+<body>
+    <canvas id="grid-canvas"></canvas>
+    <div class="scanlines"></div>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar" id="navbar">
+            <a class="logo" href="#" onclick="goHome(); return false;">
+                <div class="logo-text">HACK-<span class="r">R</span><span class="academy"> ACADEMY</span></div>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="active" id="navHome"  onclick="goHome(); return false;">Home</a></li>
+                <li><a href="#" id="navAbout" onclick="showAbout(event)">About Us</a></li>
+                <li><a href="#" id="navSession" onclick="showSession(event)">Book Session</a></li>
+                <li><a href="#" id="navTools" onclick="showTools(event)"> Tools</a></li>                
+                <li><a href="#" id="navContact" onclick="showContact(event)"> Contact Us</a></li>
+
+
+            </ul>
+
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- HOME SECTION -->
+    <div id="home-section">
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Learn <span>Ethical Hacking</span><br>& Bug Bounty</h1>
+                <p>Build real skills in Cybersecurity, Bug Bounty, and Security Research with Hack-R Academy — a community-first platform for the next generation of ethical hackers.</p>
+                <div class="hero-btns">
+                    <a href="#sub-articles" class="btn-primary" onclick="switchTab('sub-articles'); return false;">Explore Articles</a>
+                    <a href="#" class="btn-ghost"   onclick="showAbout(event); return false;">About Us</a>
+                </div>
+                <p class="hero-eyebrow">// Cybersecurity Learning Platform</p>
+            </div>
+            <div class="hero-image">
+                <img src="images/logo.png" alt="Hack-R Academy">
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-num">20+</div>
+                <div class="stat-label">Articles</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">100+</div>
+                <div class="stat-label">Companies Secured</div>
+            </div>
+                        <div class="stat-item">
+                <div class="stat-num">500+</div>
+                <div class="stat-label">Group Members</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">∞</div>
+                <div class="stat-label">Things to Learn</div>
+            </div>
+
+        </div>
+
+        <!-- Tabs -->
+        <nav class="tab-nav">
+            <ul>
+                <li><a href="#" data-sub="sub-articles"  class="active">Articles</a></li>
+                <li><a href="#" data-sub="sub-youtube">YouTube</a></li>
+                <li><a href="#" data-sub="sub-tools">Tools</a></li>
+                <li><a href="#" data-sub="sub-testimonials">Testimonials</a></li>
+            </ul>
+        </nav>
+
+        <!-- Tab Pages -->
+        <div class="sub-pages">
+
+            <!-- ARTICLES -->
+            <div id="sub-articles" class="sub-page active">
+                <div class="article-header">
+
+
+                    <h2 class="tab-title">Articles</h2>
+                    <div class="sort-control">
+                        <label for="article-sort">Sort by:</label>
+                        <select id="article-sort">
+                            <option value="latest">Latest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="beginner">Beginner Friendly Articles</option>
+                        
+                        </select>
+                    </div>
+                    
+                </div>
+
+
+
+
+
+                <div class="article-container" id="article-container">
+                    <a href="https://medium.com/the-first-digit/found-a-security-vulnerability-heres-how-to-report-it-with-r-disclosure-0495439009cf?" target="_blank" class="article-card" data-date="2026-07-31" data-level="3">
+                        <div class="card-thumb">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*3beb6zFmgDwdafKIWB76Kw.png" alt="">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-date">JULY 31, 2026</span>
+                                <span class="card-tag">BUG BOUNTY</span>
+                            </div>
+                            <h3>Found a Security Vulnerability? Here’s How to Report It (with R-Disclosure)</h3>
+                            <p>5 min read</p>
+                        </div>
+                    </a>
+
+
+                    <a href="https://infosecwriteups.com/how-i-was-able-to-modify-ratings-on-a-target-and-cause-business-impact-f690fa0695b8" target="_blank" class="article-card" data-date="2026-06-01" data-level="3">
+                        <div class="card-thumb">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*bu4FGqq_aFMDlfymvwBXfA.png" alt="">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-date">JUN 01, 2026</span>
+                                <span class="card-tag">BUG BOUNTY</span>
+                            </div>
+                            <h3>How I was able to Modify Ratings on a Target and Cause Business Impact</h3>
+                            <p>6 min read</p>
+                        </div>
+                    </a>
+
+                    <a href="https://medium.com/bugbountywriteup/how-to-get-started-with-cybersecurity-and-ethical-hacking-5f8147d92970" target="_blank" class="article-card" data-date="2026-04-19" data-level="1">
+                        <div class="card-thumb">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*rUOYgFK602BVPlbVXeWGRg.png" alt="">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-date">APR 19, 2026</span>
+                                <span class="card-tag">BEGINNER</span>
+                            </div>
+                            <h3>How to Get Started with Cybersecurity &amp; Ethical Hacking</h3>
+                            <p>5 min read</p>
+                        </div>
+                    </a>
+
+                    <a href="https://medium.com/bugbountywriteup/how-i-got-a-hall-of-fame-at-a-uefa-champions-league-football-club-bcedc352ce4d" target="_blank" class="article-card" data-date="2026-03-13" data-level="2">
+                        <div class="card-thumb">
+                            <img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*VkEMToMA50SMPg8Ylo0isA.jpeg" alt="image">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-date">MAR 13, 2026</span>
+                                <span class="card-tag">WRITEUP</span>
+                            </div>
+                            <h3>How I Got a Hall of Fame at a UEFA Champions League Club</h3>
+                            <p>10 min read</p>
+                        </div>
+                    </a>
+
+                    <a href="https://infosecwriteups.com/how-to-hack-swagger-ui-complete-guide-9291d9158603" target="_blank" class="article-card" data-date="2026-01-04" data-level="3">
+                        <div class="card-thumb">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*4MIiORe3WkDUwvjt-M3Cgg.png" alt="image">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-date">FEB 04, 2026</span>
+                                <span class="card-tag">GUIDE</span>
+                            </div>
+                            <h3>How to Hack Swagger UI — Complete Guide</h3>
+                            <p>5 min read</p>
+                        </div>
+                    </a>
+
+                    <a href="https://infosecwriteups.com/how-to-find-p1-bugs-using-google-in-your-target-part-3-92080292f4ac" target="_blank" class="article-card" data-date="2025-12-25" data-level="3">
+                        <div class="card-thumb">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*RT3nQ9yBVb9tQ6gkE1jWbQ.png" alt="image">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-date">DEC 25, 2025</span>
+                                <span class="card-tag">GUIDE</span>
+                            </div>
+                            <h3>How to Find P1 Bugs using Google in your Target — (Part-3)</h3>
+                            <p>5 min read</p>
+                        </div>
+                    </a>
+
+                    <a href="https://osintteam.blog/unique-ways-to-recon-for-bug-hunters-short-series-part-2-735d0b2fad2b" target="_blank" class="article-card" data-date="2025-08-26" data-level="2">
+                        <div class="card-thumb">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*tQd1MFvKiunKpaOtomi_zA.png" alt="image">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-date">AUG 26, 2025</span>
+                                <span class="card-tag">GUIDE</span>
+                            </div>
+                            <h3>Unique ways to Recon for Bug Hunters: Short series [Part 2]</h3>
+                            <p>4 min read</p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- YOUTUBE -->
+            <div id="sub-youtube" class="sub-page">
+                <h2 class="tab-title">YouTube Videos</h2>
+                <div class="video-grid">
+
+
+                    <div class="video-wrap">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/IhZTnip0p3I?si=3SIEB1ziKM3MndOw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+<!-- -----------------------------------------------------------------youtube/end---------------------------------------------------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+            <div id="sub-tools" class="sub-page">
+                <h2 class="tab-title">Tools by Hack-R Academy</h2>
+                <p class="tools-intro">Open-source recon &amp; security tools built by our team. Free to use, right in your browser.</p>
+                <div class="tools-grid">
+
+                    <a href="https://www.hackracademy.com/r-dorker" target="_blank" class="tool-card">
+                        <div class="tool-icon">🔍</div>
+                        <div class="tool-body">
+                            <div class="tool-tag">RECON</div>
+                            <h3>R-Dorker</h3>
+                            <p>Automates Google Dorking for reconnaissance. Generate advanced search queries against any target domain to uncover exposed files, admin panels, API keys, and more.</p>
+                            <span class="tool-link">Open Tool →</span>
+                        </div>
+                    </a>
+
+                    <a href="https://www.hackracademy.com/r-threatrecon" target="_blank" class="tool-card">
+                        <div class="tool-icon">🕵️</div>
+                        <div class="tool-body">
+                            <div class="tool-tag">RECON</div>
+                            <h3>R-ThreatRecon</h3>
+                            <p>Threat reconnaissance tool for gathering intelligence on a target. Quickly map attack surface, identify exposed services, and build a picture of your target's footprint.</p>
+                            <span class="tool-link">Open Tool →</span>
+                        </div>
+                    </a>
+
+                    <a href="https://www.hackracademy.com/r-disclosure" target="_blank" class="tool-card">
+                        <div class="tool-icon">📋</div>
+                        <div class="tool-body">
+                            <div class="tool-tag">REPORTING</div>
+                            <h3>R-Disclosure</h3>
+                            <p>Responsible disclosure report builder. Helps researchers write clear, professional vulnerability disclosure reports with all the right fields — ready to send to a security team.</p>
+                            <span class="tool-link">Open Tool →</span>
+                        </div>
+                    </a>
+
+                    <a href="https://www.hackracademy.com/r-exif" target="_blank" class="tool-card">
+                        <div class="tool-icon">🖼️</div>
+                        <div class="tool-body">
+                            <div class="tool-tag">FORENSICS</div>
+                            <h3>R-Exif</h3>
+                            <p>Browser-based EXIF metadata extractor. Upload any image to instantly reveal hidden metadata — GPS coordinates, camera model, timestamps, and more. No upload to server.</p>
+                            <span class="tool-link">Open Tool →</span>
+                        </div>
+                    </a>
+                    <a href="https://www.hackracademy.com/r-clickjacking" target="_blank" class="tool-card">
+                        <div class="tool-icon">🖱️</div>
+                        <div class="tool-body">
+                            <div class="tool-tag">WEB SECURITY</div>
+                            <h3>R-CLickjack</h3>
+                            <p>Interactive clickjacking testing tool. Embed websites inside an iframe to quickly verify frame protection headers and identify potential clickjacking vulnerabilities in a safe environment.</p>
+                            <span class="tool-link">Open Tool →</span>
+                        </div>
+                    </a>
+                    <a href="https://www.hackracademy.com/r-threatrecon" target="_blank" class="tool-card">
+                        <div class="tool-icon">🕵️</div>
+                        <div class="tool-body">
+                            <div class="tool-tag">THREAT INTELLIGENCE</div>
+                            <h3>R-Threatrecon</h3>
+                            <p>Browser-based threat intelligence toolkit. Analyze IP addresses, domains, URLs, and file hashes with quick access to multiple OSINT and reputation sources for faster security investigations.</p>
+                            <span class="tool-link">Open Tool →</span>
+                        </div>
+                    </a>
+
+                <a href="https://www.hackracademy.com/r-magicbyte" target="_blank" class="tool-card">
+                    <div class="tool-icon">🧬</div>
+                    <div class="tool-body">
+                        <div class="tool-tag">FILE FORENSICS</div>
+                        <h3>R-MagicByte</h3>
+                        <p>Browser-based file signature and extension verification tool. Analyze files locally using magic bytes to identify their true file type, detect extension mismatches, and inspect MIME type, confidence, and hexadecimal data for forensic investigations.</p>
+                        <span class="tool-link">Open Tool →</span>
+                    </div>
+                </a>
+
+
+                </div>
+             </div> <!-- tools -->
+        </div><!-- tab pages -->
+    </div><!-- /home-section -->
+
+
+    <!-- ABOUT SECTION -->
+    <div id="about-section" class="about-section">
+
+        <button class="back-btn" onclick="goHome()">← Back to Home</button>
+
+        <div class="section-header">
+            <h1>About Hack-R Academy</h1>
+            <div class="line"></div>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-card">
+                <h2>Our Mission</h2>
+                <p>Hack-R Academy is a cybersecurity learning platform focused on ethical hacking, bug bounty hunting, security research, and practical learning for beginners. Our goal is to help students explore cybersecurity through articles, videos, writeups, and community learning.</p>
+            </div>
+
+            <div class="about-card">
+                <h2>Current Status</h2>
+                <p>We are an active and growing community. Our WhatsApp group, LinkedIn page, and YouTube channel are regularly updated with new content. We publish writeups, vulnerability research, and beginner guides on a rolling basis. The community is free and open to all.</p>
+            </div>
+
+            <div class="founder-card">
+                <div class="founder-avatar"><img src="images/profilepic.png" width= "90px"; height= "90px";></div>
+                <div class="founder-info">
+                    <h2>Rivek Raj Tamang</h2>
+                    <p class="role">// FOUNDER,SECURITY RESEARCHER &amp; ETHICAL HACKER</p>
+                    <p>Rivek started Hack-R Academy after realising that most cybersecurity resources were either too expensive or too scattered for beginners. He began his own ethical hacking journey by following free resources online, participating in bug bounty programs, and learning through hands-on practice. After achieving a Hall of Fame recognition/Finding bugs/securing the data of numerous companies and government, he decided to build a community where others could follow a similar path — without the noise and cost. Today he leads the platform's content direction and mentors students through the WhatsApp group and LinkedIn page.</p>
+                    <div class="founder-timeline">
+                        <div class="timeline-item"> Security Acknowledgements<span>200+</span></div>
+                        <div class="timeline-item"> Bug Bounty Hunter<span>Active Researcher</span></div>
+                        <div class="timeline-item"> Content Creator<span>Articles + Videos</span></div>
+                        <div class="timeline-item"> Community Builder<span>Hack-R Academy</span></div>
+                    </div> 
+                    <div class="founder-links">
+                        <!-- linkedin -->
+                            <a href="https://www.linkedin.com/in/rivektamang/" target="_blank" class="founder-link link-linkedin">
+                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+                            </a>
+                        <!-- medium -->
+                            <a href="https://rivudon.medium.com/" target="_blank" class="founder-link link-medium">
+                                <svg viewBox="0 0 50 50" width="16" height="16" fill="currentColor"><path d="M45,4H5C4.448,4,4,4.448,4,5v40c0,0.552,0.448,1,1,1h40c0.552,0,1-0.448,1-1V5C46,4.448,45.552,4,45,4z M40,13.5 l-1.821,2.197C38.064,15.811,38,15.965,38,16.125V32.75c0,0.16,0.064,0.314,0.179,0.428L40,35.546V36H30v-0.454l2.821-2.368 C32.936,33.064,33,32.91,33,32.75V17.879L24.848,36h-0.001h-1.543l0,0L15,18.375v13.108c0,0.22,0.076,0.433,0.215,0.605L18,35.546 V36h-8v-0.454l2.783-3.438C12.923,31.936,13,31.721,13,31.5V16.388c0-0.142-0.05-0.279-0.142-0.388L11,13.5V13h7.097l7.624,16.183 L33.002,13H40V13.5z"></path></svg>
+                                
+                            </a>
+                        <!-- twitter -->
+                            <a href="https://x.com/RivekTamang" target="_blank" class="founder-link link-twitter">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            
+                            </a>
+                                    
+
+                        <!-- github -->
+                            <a href="https://github.com/Rivek619" target="_blank" class="founder-link link-github">
+                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>   
+        
+                            </a>
+        
+                            <!-- Email -->
+                            <a href="mailto:cybersecrivek@gmail.com" class="founder-link link-email">
+                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/></svg>
+                                
+       
+                            </a>
+                    </div>
+
+
+ 
+                </div>
+            </div>
+            <div class="founder-card">
+                <div class="founder-avatar"><img src="images/photo.png" width= "90px"; height= "90px";></div>
+                <div class="founder-info">
+                    <h2>Arshdeep Singh Minhas</h2>
+                    <p class="role">// COMMUNITY LEAD &amp; STUDENT</p>
+                    <p>Arshdeep is the assitant of Rivek, he just started his journey of computer science, currently learning under Rivek's wing. His role is to manage the overall group, Photo editing, Web development and more in coming years.</p>
+                    <div class="founder-timeline">
+                        <div class="timeline-item"> Student<span>BCA</span></div>
+                        <div class="timeline-item"> Projects<span>Currently working on 1</span></div>
+                        <div class="timeline-item"> Web developer<span>Created this website</span></div>
+                        <div class="timeline-item"> Community Manager<span>Hack-R Academy</span></div>
+                    </div>
+                                        <div class="founder-links">
+                        <!-- github -->
+                            <a href="https://github.com/arshudon" target="_blank" class="founder-link link-github">
+                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                                
+    
+                            </a>
+                            <!-- linkedin -->
+                            <a href="https://www.linkedin.com/in/arshdeep-singh-minhas-51b543282 " target="_blank" class="founder-link link-linkedin">
+                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+                                
+        
+                            </a>
+                            <!-- instagram -->
+                            <a href="https://instagram.com/_arshudon_" target="_blank" class="founder-link link-instagram">
+                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.444.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg>
+                                
+        
+                            </a>
+                            <!-- Email -->
+                            <a href="mailto:arshdeepworkonly@gmail.com" class="founder-link link-email">
+                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/></svg>
+                                
+       
+                            </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <p style="font-family: 'Share Tech Mono', monospace; font-size: 14px; color: #00ffcc; letter-spacing: 1px;">// Learn. Share. Help. Hack. Repeat.</p>
+
+    </div>
+
+
+<!-- ----------------------------------------------------------------------TOOLS-1ST NAVBAR ------------------------------------------------------------------- -->
+
+    <div id="tools-section" style="display: none;">
+        <div class="session-page">
+            
+            <div class="session-page-header">
+                <button class="back-btn" onclick="goHome()">← Back to Home</button>
+                <p class="session-page-eyebrow">// OPEN SOURCE TOOLS</p>
+                <h1 class="session-page-title">Tools by Hack-R Academy</h1>
+                <p class="session-page-sub">Free browser-based recon and security tools. No install needed.</p>
+            </div>
+
+            <div class="tools-grid">
+                <a href="https://www.hackracademy.com/r-dorker" target="_blank" class="tool-card">
+                    <div class="tool-icon">🔍</div>
+                    <div class="tool-body">
+                        <div class="tool-tag">RECON</div>
+                        <h3>R-Dorker</h3>
+                        <p>Automates Google Dorking for reconnaissance. Generate advanced search queries against any target domain to uncover exposed files, admin panels, API keys, and more.</p>
+                        <span class="tool-link">Open Tool →</span>
+                    </div>
+                </a>
+
+                <a href="https://www.hackracademy.com/r-disclosure" target="_blank" class="tool-card">
+                    <div class="tool-icon">🕵️</div>
+                    <div class="tool-body">
+                        <div class="tool-tag">REPORTING</div>
+                        <h3>R-Disclosure</h3>
+                        <p>Responsible disclosure report builder. Helps researchers write clear, professional vulnerability disclosure reports — ready to send to a security team.</p>
+                        <span class="tool-link">Open Tool →</span>
+                    </div>
+                </a>
+                <a href="https://www.hackracademy.com/r-exif" target="_blank" class="tool-card">
+                    <div class="tool-icon">🖼️</div>
+                    <div class="tool-body">
+                        <div class="tool-tag">FORENSICS</div>
+                        <h3>R-Exif</h3>
+                        <p>Browser-based EXIF metadata extractor. Upload any image to instantly reveal hidden metadata — GPS coordinates, camera model, timestamps, and more. No upload to server.</p>
+                        <span class="tool-link">Open Tool →</span>
+                    </div>
+                </a>
+                <a href="https://www.hackracademy.com/r-encoder" target="_blank" class="tool-card">
+                    <div class="tool-icon">🔐</div>
+                    <div class="tool-body">
+                        <div class="tool-tag">ENCODING</div>
+                        <h3>R-Encoder</h3>
+                        <p>Multi-format text encoder and decoder. Instantly convert data between Base64, URL, HTML, Hex, Binary, and other common formats for security testing and development.</p>
+                        <span class="tool-link">Open Tool →</span>
+                    </div>
+                    
+                </a>
+                <a href="https://www.hackracademy.com/r-clickjacking" target="_blank" class="tool-card">
+                    <div class="tool-icon">🖱️</div>
+                    <div class="tool-body">
+                        <div class="tool-tag">WEB SECURITY</div>
+                        <h3>R-CLickjack</h3>
+                        <p>Interactive clickjacking testing tool. Embed websites inside an iframe to quickly verify frame protection headers and identify potential clickjacking vulnerabilities in a safe environment.</p>
+                        <span class="tool-link">Open Tool →</span>
+                    </div>
+                </a>
+                <a href="https://www.hackracademy.com/r-threatrecon" target="_blank" class="tool-card">
+                    <div class="tool-icon">🕵️</div>
+                    <div class="tool-body">
+                        <div class="tool-tag">THREAT INTELLIGENCE</div>
+                        <h3>R-Threatrecon</h3>
+                        <p>Browser-based threat intelligence toolkit. Analyze IP addresses, domains, URLs, and file hashes with quick access to multiple OSINT and reputation sources for faster security investigations.</p>
+                        <span class="tool-link">Open Tool →</span>
+                    </div>
+                </a>
+
+                <a href="https://www.hackracademy.com/r-triage" target="_blank" class="tool-card">
+                    <div class="tool-icon">🕵️</div>
+                    <div class="tool-body">
+                        <div class="tool-tag">MALWARE INTELLIGENCE</div>
+                        <h3>R-Triage</h3>
+                        <p>Browser-based hash triage toolkit for SOC and DFIR investigations. Upload a file or paste an MD5, SHA1, or SHA256 hash to quickly pivot across multiple malware intelligence and reputation sources.</p>
+                        <span class="tool-link">Open Tool →</span>
+                    </div>
+                </a>
+
+                <a href="https://www.hackracademy.com/r-magicbyte" target="_blank" class="tool-card">
+                    <div class="tool-icon">🧬</div>
+                    <div class="tool-body">
+                        <div class="tool-tag">FILE FORENSICS</div>
+                        <h3>R-MagicByte</h3>
+                        <p>Browser-based file signature and extension verification tool. Analyze files locally using magic bytes to identify their true file type, detect extension mismatches, and inspect MIME type, confidence, and hexadecimal data for forensic investigations.</p>
+                        <span class="tool-link">Open Tool →</span>
+                    </div>
+                </a>
+
+
+
+
+
+                
+            </div>
+        </div>
+        
+    </div>
+
+
+
+
+<!-- CONTACT US -->
+    <div id="contact-section" style="display: none;">
+        <h2 class="tab-title">Contact Us</h2>
+
+
+        <div class="contact-card">
+            <h3 class="contact-card-title">Send us a message</h3>
+            <p class="contact-card-sub">Have a question, feedback, or just want to say hi? Drop us a line.</p>
+
+            <form class="contact-form" id="contact-form">
+                <label for="contact-name">Name</label>
+                <input type="text" id="contact-name" name="name" placeholder="Your name" required>
+
+                <label for="contact-email">Email</label>
+                <input type="email" id="contact-email" name="email" placeholder="you@example.com" required>
+
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" rows="5" placeholder="Type your message here...." required></textarea>
+
+                <button type="submit" class="btn-primary contact-submit">Send Message</button>
+            </form>
+            
+        </div>
+    </div>
+
+    <!-- BOOK SESSION SECTION -->
+    <div id="session-section" style="display: none;">
+        <div class="session-page">
+
+            <!-- Header -->
+            <div class="session-page-header">
+                <button class="back-btn" onclick="goHome()">← Back to Home</button>
+                <p class="session-page-eyebrow">// 1:1 MENTOR SESSIONS</p>
+                <h1 class="session-page-title">Book a Session</h1>
+                <p class="session-page-sub">Choose a session that fits your goal. All sessions are conducted online via Zoom or Google Meet.</p>
+
+            </div>
+
+
+            <!-- Session Cards Grid -->
+            <div class="session-cards-grid">
+
+                <!-- CARD 1 -->
+                <div class="session-card">
+                    <div class="mentor-badge">BEGINNER</div>
+                    <h3 class="session-card-title">Introduction to CyberSecurity &amp; Ethical Hacking</h3>
+                    <div class="session-card-meta">
+                        <span>🎥 Online</span>
+                        <span>⏱ 90 mins</span>
+                    </div>
+                    <p class="session-card-desc">Get a solid foundation in cybersecurity. Learn the mindset, tools, and techniques needed to start your journey into ethical hacking.</p>
+                    <div class="mentor-pricing">
+                        <div class="price-item">
+                            <span class="price-label">Students</span>
+                            <span class="price-value">₹399</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Professionals</span>
+                            <span class="price-value">₹599</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/919593285657?text=Hi!%20I%20would%20like%20to%20book%20the%20%22Introduction%20to%20CyberSecurity%20%26%20Ethical%20Hacking%22%20session.%20I%20am%20interested%20in%20learning%20the%20fundamentals%20of%20cybersecurity%20and%20ethical%20hacking.%20Please%20share%20the%20available%20slots%20and%20further%20details." target="_blank" class="btn-primary mentor-book-btn">Book →</a>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="session-card">
+                    <div class="mentor-badge">POPULAR</div>
+                    <h3 class="session-card-title">Introduction to Bug Bounty Hunting &amp; Guidance</h3>
+                    <div class="session-card-meta">
+                        <span>🎥 Online</span>
+                        <span>⏱ 120 mins</span>
+                    </div>
+                    <p class="session-card-desc">Start your bug bounty journey. Learn how to find vulnerabilities, report them professionally, and get your first bounty.</p>
+                    <div class="mentor-pricing">
+                        <div class="price-item">
+                            <span class="price-label">Students</span>
+                            <span class="price-value">₹499</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Professionals</span>
+                            <span class="price-value">₹699</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/919593285657?text=Hi!%20I%20would%20like%20to%20book%20the%20%22Introduction%20to%20Bug%20Bounty%20Hunting%20%26%20Guidance%22%20session.%20I%20want%20to%20learn%20about%20finding%20and%20reporting%20vulnerabilities%20and%20getting%20started%20with%20bug%20bounties.%20Please%20share%20the%20available%20slots%20and%20additional%20information." target="_blank" class="btn-primary mentor-book-btn">Book →</a>
+                </div>
+
+                <!-- CARD 3 — BONUS (glowing) -->
+
+                        <!-- SVG filter definition — place this right after <body> tag or before the footer -->
+                        <svg style="position:absolute;width:0;height:0;overflow:hidden;">
+                            <defs>
+                                <filter id="electric-filter" colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1"/>
+                                    <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
+                                        <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite" calcMode="linear"/>
+                                    </feOffset>
+                                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1"/>
+                                    <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
+                                        <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite" calcMode="linear"/>
+                                    </feOffset>
+                                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise3" seed="2"/>
+                                    <feOffset in="noise3" dx="0" dy="0" result="offsetNoise3">
+                                        <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite" calcMode="linear"/>
+                                    </feOffset>
+                                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise4" seed="2"/>
+                                    <feOffset in="noise4" dx="0" dy="0" result="offsetNoise4">
+                                        <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite" calcMode="linear"/>
+                                    </feOffset>
+                                    <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1"/>
+                                    <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2"/>
+                                    <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise"/>
+                                    <feDisplacementMap in="SourceGraphic" in2="combinedNoise" scale="30" xChannelSelector="R" yChannelSelector="B"/>
+                                </filter>
+                            </defs>
+                        </svg>
+
+
+
+                        <div class="bonus-card-wrapper">
+
+                                <div class="bonus-inner">
+                                    <div class="bonus-border-outer">
+                                        <div class="bonus-electric-border"></div>
+                                    </div>
+                                    <div class="bonus-glow-1"></div>
+                                    <div class="bonus-glow-2"></div>
+                                </div>
+
+                                <div class="bonus-overlay-1"></div>
+                                <div class="bonus-overlay-2"></div>
+                                <div class="bonus-bg-glow"></div>
+
+                                <div class="session-card session-card--bonus">
+                                    <div class="mentor-badge badge-bonus">✦ BONUS</div>
+                                    <h3 class="session-card-title">1:1 Personalized Session</h3>
+                                    <div class="session-card-meta">
+                                        <span>🎥 Online</span>
+                                        <span>⏱ 150 mins</span>
+                                    </div>
+                                    <p class="session-card-desc">A fully personalized deep-dive session tailored to your specific goals, skill level, and target area. Bring your questions — we go where you need to go.</p>
+                                    <div class="mentor-pricing">
+                                        <div class="price-item">
+                                            <span class="price-label">Students</span>
+                                            <span class="price-value">₹999</span>
+                                        </div>
+                                        <div class="price-item">
+                                            <span class="price-label">Professionals</span>
+                                            <span class="price-value">₹1499</span>
+                                        </div>
+                                    </div>
+                                    <a href="https://wa.me/919593285657?text=Hi!%20I%20am%20interested%20in%20the%201%3A1%20Personalized%20Session.%20I%20would%20like%20guidance%20tailored%20to%20my%20goals%20and%20skill%20level.%20Please%20let%20me%20know%20the%20available%20slots%20and%20how%20we%20can%20proceed." target="_blank" class="btn-primary mentor-book-btn">Book →</a>
+                                </div>
+                        </div>
+
+            </div><!-- /session-cards-grid -->
+
+            <a href="Session_Overview.pdf" target="_blank" class="overview-pill">
+                📄 Session Overview — View PDF
+            </a>
+
+        </div><!-- /session-page -->
+    </div><!-- /session-section -->
+
+
+
+
+<!-- --------------------------------------------------------------FOOTERR------------------------------ -->
+
+
+
+
+
+
+    <footer>
+        <div class="footer-grid">
+    
+            <div class="footer-brand">
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 16px; color: #e8f5f0; display: inline-block; margin-bottom: 14px;">
+                    HACK-<span class="r">R</span> <span class="academy">ACADEMY</span>
+                </div>
+                <p>A free cybersecurity learning platform for ethical hackers, bug bounty hunters, and security researchers. Learn. Share. Help. Hack. Repeat.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Articles</h4>
+                <ul>
+                    <li><a href="https://infosecwriteups.com/how-i-was-able-to-modify-ratings-on-a-target-and-cause-business-impact-f690fa0695b8" target="_blank">Modify Ratings Bug</a></li>
+                    <li><a href="https://medium.com/bugbountywriteup/how-to-get-started-with-cybersecurity-and-ethical-hacking-5f8147d92970" target="_blank">Get Started in CyberSec</a></li>
+                    <li><a href="https://medium.com/bugbountywriteup/how-i-got-a-hall-of-fame-at-a-uefa-champions-league-football-club-bcedc352ce4d" target="_blank">Hall of Fame Story</a></li>
+                    <li><a href="https://infosecwriteups.com/how-to-hack-swagger-ui-complete-guide-9291d9158603" target="_blank">Hack Swagger UI Guide</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="https://www.hackracademy.com/r-dorker" target="_blank">R-Dorker</a></li>
+                    <li><a href="https://www.hackracademy.com/r-threatrecon" target="_blank">R-ThreatRecon</a></li>
+                    <li><a href="https://www.hackracademy.com/r-disclosure" target="_blank">R-Disclosure</a></li>
+                    <li><a href="https://www.hackracademy.com/r-exif" target="_blank">R-Exif</a></li>
+                    <li><a href="https://www.hackracademy.com/r-encoder" target="_blank">R-Encoder</a></li>
+                    <li><a href="https://www.hackracademy.com/r-clickjack" target="_blank">R-Clickjack</a></li>
+                    <li><a href="https://www.hackracademy.com/r-triage" target="_blank">R-Triage</a></li>
+                    <li><a href="https://www.hackracademy.com/r-magicbyte" target="_blank">R-Triage</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://www.linkedin.com/company/hackracademy/" target="_blank">LinkedIn Page</a></li>
+                    <li><a href="https://www.youtube.com/@hackracademy" target="_blank">YouTube Channel</a></li>
+                    <li><a href="https://chat.whatsapp.com/DD3NTchIGlF9Fg1tRMSpPs" target="_blank">WhatsApp Group</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navigate</h4>
+                <ul>
+                    <li><a href="#" onclick="goHome(); return false;">Home</a></li>
+                    <li><a href="#" onclick="showAbout(event); return false;">About Us</a></li>
+                    <li><a href="#" onclick="showSession(event); return false;">Book Session</a></li>
+                    <li><a href="#" onclick="showTools(event); return false;">Tools</a></li>
+                    <li><a href="#" onclick="showContact(event); return false;">Contact Us</a></li>
+                    <li><a href="#" onclick="goToTab('sub-articles'); return false;">Articles</a></li>
+                    <li><a href="#" onclick="goToTab('sub-youtube'); return false;">Videos</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Hack-R Academy · Founded by Rivek Raj Tamang</p>
+            <p>Made with <3 by Arsh</p>
+            <span class="footer-tag">// LEARN. HACK. REPEAT.</span>
+        </div>
+    </footer>
+
+    <script src="preset-2.js"></script>
+</body>
+</html>

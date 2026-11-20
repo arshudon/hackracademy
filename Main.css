@@ -803,7 +803,64 @@ header {
     border: none;
 }
 
+/* ─── LINKEDIN TAB ────────────────────────────────────────── */
+.linkedin-block {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--card-bg);
+    border: 1px solid rgba(0,255,204,0.12);
+    border-radius: 12px;
+    padding: 28px 32px;
+    max-width: 480px;
+    text-decoration: none;
+    transition: .25s;
+}
 
+.linkedin-block:hover {
+    border-color: rgba(0,255,204,0.35);
+    box-shadow: 0 8px 28px rgba(0,255,204,0.1);
+}
+
+.linkedin-block img { width: 48px; height: 48px; border-radius: 8px; }
+
+.linkedin-block .li-text h3 {
+    font-family: var(--font-head);
+    font-size: 16px;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.linkedin-block .li-text p {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--teal);
+}
+
+/* ─── JOIN US TAB ─────────────────────────────────────────── */
+.join-block {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.join-block p {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 360px;
+    margin-top: 0;
+}
+
+.qr-wrap {
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    display: inline-block;
+}
+
+.qr-wrap img { width: 200px; display: block; border-radius: 6px; }
 
 /* ─── FOOTER ─────────────────────────────────────────────── */
 footer {
@@ -1378,18 +1435,7 @@ footer {
 }
 
 /* ── Cards Grid ────────────────────────────────────────── */
-.session-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    width: 100%;
-    align-items: stretch;
-}
-.session-card,
-.bonus-card-wrapper {
-    min-height: 400px;
-    box-sizing: border-box;
-}
+
 
 .session-card {
     background: var(--card-bg);
@@ -1416,12 +1462,11 @@ footer {
     animation: shimmer 3s linear infinite;
 }
 
-.session-card:not(.session-card--bonus):hover {
+.session-card:not(.session-card--bonus):not(.session-card--deluxe):hover  {
     transform: translateY(-6px);
     box-shadow: 0 16px 40px rgba(0,255,204,0.12);
     border-color: rgba(0,255,204,0.25);
 }
-
 
 .session-card:hover::before { opacity: 1; }
 
@@ -1447,16 +1492,73 @@ footer {
     flex: 1;
 }
 
-.session-card--bonus:hover {
-    transform: none;
-    box-shadow: none;
-    border-color: transparent;
+
+/* ==========================================
+   SESSION CARDS GRID
+========================================== */
+
+.session-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    align-items: stretch;
 }
 
-/* ── BONUS card wrapper ─────────────────────────────────── */
-.bonus-card-wrapper {
+/* ==========================================
+   SHARED GLOWING CARD WRAPPERS
+========================================== */
+
+.bonus-card-wrapper,
+.deluxe-card-wrapper {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     border-radius: 14px;
+    padding: 0;
+    margin: 0;
+    background: var(--card-bg);
+}
+
+/* Inner cards fill their wrappers */
+
+.bonus-card-wrapper > .session-card--bonus,
+.deluxe-card-wrapper > .session-card--deluxe {
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    min-height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+}
+
+/* Prevent overflow */
+
+.session-card,
+.bonus-card-wrapper,
+.deluxe-card-wrapper {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   BONUS CARD — TEAL GLOW
+========================================== */
+
+.bonus-card-wrapper {
     border: 1.5px solid rgba(0,255,204,0.8);
     box-shadow:
         0 0 8px rgba(0,255,204,0.6),
@@ -1474,6 +1576,7 @@ footer {
             0 0 40px rgba(0,255,204,0.12);
         border-color: rgba(0,255,204,0.8);
     }
+
     50% {
         box-shadow:
             0 0 12px rgba(0,255,204,0.9),
@@ -1491,24 +1594,146 @@ footer {
         0 0 80px rgba(0,255,204,0.25);
 }
 
-.session-cards-grid{
-    padding: 30px;
+/* ==========================================
+   DELUXE CARD — GOLD GLOW
+========================================== */
+
+.deluxe-card-wrapper {
+    border: 1.5px solid rgba(255,204,0,0.85);
+    box-shadow:
+        0 0 8px rgba(255,204,0,0.6),
+        0 0 20px rgba(255,185,0,0.3),
+        0 0 40px rgba(255,165,0,0.12);
+    animation: deluxeNeonPulse 2.5s ease-in-out infinite;
+    transition: transform .25s, box-shadow .25s;
 }
 
-/* ── Mobile ────────────────────────────────────────────── */
-@media (max-width: 1100px) {
-    .session-cards-grid {
-        grid-template-columns: repeat(2, 1fr);
+@keyframes deluxeNeonPulse {
+    0%, 100% {
+        box-shadow:
+            0 0 8px rgba(255,204,0,0.6),
+            0 0 20px rgba(255,185,0,0.3),
+            0 0 40px rgba(255,165,0,0.12);
+        border-color: rgba(255,204,0,0.85);
+    }
+
+    50% {
+        box-shadow:
+            0 0 12px rgba(255,215,0,0.9),
+            0 0 30px rgba(255,195,0,0.5),
+            0 0 60px rgba(255,170,0,0.2);
+        border-color: rgba(255,215,0,1);
     }
 }
+
+.deluxe-card-wrapper:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 0 16px rgba(255,215,0,1),
+        0 0 40px rgba(255,190,0,0.6),
+        0 0 80px rgba(255,165,0,0.25);
+}
+
+/* ==========================================
+   PRICING LAYOUT
+========================================== */
+
+.mentor-pricing {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
+.price-item {
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Prevent text overflow */
+
+.session-card-title,
+.session-card-desc {
+    overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   RESPONSIVE GRID
+========================================== */
+
+/* Tablet: 2 columns */
+
+@media (max-width: 1100px) {
+    .session-cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile: 1 column */
 
 @media (max-width: 700px) {
     .session-cards-grid {
-        grid-template-columns: 1fr;
-        max-width: 440px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+        padding: 16px 0;
     }
 }
 
-@media (max-width: 600px) {
-    .session-page { padding: 80px 5% 60px; }
+/* Small phones */
+
+@media (max-width: 480px) {
+    .session-page {
+        padding: 80px 20px 48px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .session-card {
+        padding: 20px;
+    }
+
+    .session-card-meta {
+        flex-wrap: wrap;
+    }
+
+    .price-value {
+        font-size: clamp(18px, 5vw, 26px);
+    }
+}
+
+
+
+
+.session-card--deluxe::before {
+    display: none;
+}
+
+.badge-deluxe {
+    background: rgba(255, 180, 0, 0.12);
+    color: #ffc832;
+    border: 1px solid rgba(255, 180, 0, 0.5);
+    box-shadow: 0 0 10px rgba(255, 180, 0, 0.2);
+}
+
+/* Full-width single price box aligned with 2-column price rows */
+.price-item--full {
+    grid-column: 1 / -1;
+    text-align: center;
+    background: rgba(255, 180, 0, 0.06);
+    border: 1px solid rgba(255, 180, 0, 0.25);
+}
+
+.price-value--gold {
+    color: #ffc832;
+    text-shadow: 0 0 12px rgba(255, 180, 0, 0.5);
+}
+
+/* Gold book button */
+.btn-gold {
+    background: linear-gradient(135deg, #c8860a, #ffc832);
+    color: #1a0f00;
+}
+
+.btn-gold:hover {
+    box-shadow: 0 8px 24px rgba(255, 180, 0, 0.4);
 }
